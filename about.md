@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="{{ '/assets/images/profile_photo.jpeg' | relative_url }}" width="320" height="320" />
+<img src="{{ '/assets/images/profile.jpeg' | relative_url }}" width="320" height="320" />
 
 <p />
 
