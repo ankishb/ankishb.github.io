@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: STL-container"
+title: "STL-container"
 tag: STL-container
 ---

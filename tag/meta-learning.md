@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: meta-learning"
+title: "meta-learning"
 tag: meta-learning
 ---

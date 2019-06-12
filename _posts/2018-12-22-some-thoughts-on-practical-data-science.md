@@ -2,7 +2,7 @@
 layout: post
 title: "some-thoughts-on-practical-data-science"
 categories: data-science
-author: "Ankish Bansal"
+tag: data-science
 ---
 
 ## Control Overfitting

@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: time-complexity"
+title: "time-complexity"
 tag: time-complexity
 ---

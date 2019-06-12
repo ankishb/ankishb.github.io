@@ -1,5 +1,6 @@
 ---
 layout: post
+tag: data-science
 ---
 
 **As you read the tutorial, after that participate in this [kaggle compitition][https://www.kaggle.com/c/spooky-author-identification/data] to analyse your skill and practice.**
