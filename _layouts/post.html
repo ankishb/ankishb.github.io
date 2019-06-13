@@ -17,16 +17,16 @@ layout: default
       {%- endif -%}
 
 
-     <!--  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
         by <span itemprop="name">{{ site.author }}</span>
       </span>
 
       <span>
         {% for tag in page.tags %}
           {% capture tag_name %}{{ tag }}{% endcapture %}
-          <a class="post-tag" href="/lil-log/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr>&nbsp;</a>
+          <a class="post-tag" href="{{site.baseurl}}{{ tag_name }}"><nobr>{{ tag_name }}</nobr>&nbsp;</a>
         {% endfor %}
-      </span> -->
+      </span>
 
     </p>
   </header>
@@ -37,7 +37,7 @@ layout: default
 
 
 
-<!--   <div class="page-navigation">
+  <div class="page-navigation">
     {% if page.previous.url %}
       <a class="prev" href="{{page.previous.url | relative_url}}">&larr; {{page.previous.title}}</a>
     {% endif %}
@@ -45,7 +45,7 @@ layout: default
     {% if page.next.url %}
       <a class="next" href="{{page.next.url | relative_url}}">{{page.next.title}} &rarr;</a>
     {% endif %}
-  </div> -->
+  </div>
 
 
 
