@@ -27,14 +27,18 @@ The containers described below are:
 # Vector 
 
 `#include <vector>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 vector<T> v;| 	Make an empty vector. |	O(1)
 vector<T> v(n);| 	Make a vector with N elements. |	O(n)
 vector<T> v(n, value);| 	Make a vector with N elements, initialized to value. |	O(n)
 vector<T> v(begin, end);| 	Make a vector and copy the elements from begin to end. |	O(n)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 v[i];| 	Return (or set) the I'th element. |	O(1)
@@ -46,7 +50,9 @@ v.end();| 	Return random access iterator to end. |	O(1)
 v.front();| 	Return the first element. |	O(1)
 v.back();| 	Return the last element. |	O(1)
 v.capacity();| 	Return maximum number of elements. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 v.push_back(value);| 	Add value to end. |	O(1) (amortized)
@@ -61,14 +67,18 @@ v.erase(begin, end);| 	Erase the elements from begin to end. |	O(n)
 ## Deque 
 
 `#include <deque>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 deque<T> d;| 	Make an empty deque. |	O(1)
 deque<T> d(n);| 	Make a deque with N elements. |	O(n)
 deque<T> d(n, value);| 	Make a deque with N elements, initialized to value. |	O(n)
 deque<T> d(begin, end);| 	Make a deque and copy the values from begin to end. |	O(n)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 d[i];| 	Return (or set) the I'th element. |	O(1)
@@ -79,7 +89,9 @@ d.begin();| 	Return random access iterator to start. |	O(1)
 d.end();| 	Return random access iterator to end. |	O(1)
 d.front();| 	Return the first element. |	O(1)
 d.back();| 	Return the last element. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 d.push_front(value);| 	Add value to front. |	O(1) (amortized)
@@ -96,12 +108,16 @@ d.erase(begin, end);| 	Erase the elements from begin to end. |	O(n)
 # List 
 
 `#include <list>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 list<T> l;| 	Make an empty list. |	O(1)
 list<T> l(begin, end);| 	Make a list and copy the values from begin to end. |	O(n)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 l.size();| 	Return current number of elements. |	O(1)
@@ -110,7 +126,9 @@ l.begin();| 	Return bidirectional iterator to start. |	O(1)
 l.end();| 	Return bidirectional iterator to end. |	O(1)
 l.front();| 	Return the first element. |	O(1)
 l.back();| 	Return the last element. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 l.push_front(value);| 	Add value to front. |	O(1)
@@ -137,17 +155,23 @@ In the C++ STL, a stack is a container adaptor. That means there is no primitive
 
 
 `#include <stack>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 stack< container<T> > s;| 	Make an empty stack. |	O(1)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 s.top();| 	Return the top element. |	O(1)
 s.size();| 	Return current number of elements. |	O(1)
 s.empty();| 	Return true if stack is empty. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 s.push(value);| 	Push value on top. 	Same as push_back() for underlying container.
@@ -165,18 +189,24 @@ Don't confuse a queue with a deque.
 
 
 `#include <queue>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 queue< container<T> > q;| 	Make an empty queue. |	O(1)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 q.front();| 	Return the front element. |	O(1)
 q.back();| 	Return the rear element. |	O(1)
 q.size();| 	Return current number of elements. |	O(1)
 q.empty();| 	Return true if queue is empty. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 q.push(value);| 	Add value to end. 	Same for push_back() for underlying container.
@@ -199,17 +229,23 @@ Priority queues are neither first-in-first-out nor last-in-first-out. You push o
 # priority queue
 
 `#include <queue>` -- not a typo!
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 priority_queue<T, container<T>, comparison<T> > q;| 	Make an empty priority queue using the given container to hold values, and comparison to compare values. container defaults to vector<T> and comparison defaults to less<T>. |	O(1)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 q.top();| 	Return the "biggest" element. |	O(1)
 q.size();| 	Return current number of elements. |	O(1)
 q.empty();| 	Return true if priority queue is empty. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 q.push(value);| 	Add value to priority queue. |	O(log n)
@@ -228,12 +264,16 @@ Anything stored in a set has to have a comparison predicate. This will default t
 
 
 `#include <set>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 set< type, compare > s;| 	Make an empty set. compare should be a binary predicate for ordering the set. It's optional and will default to a function that uses operator<. |	O(1)
 set< type, compare > s(begin, end);| 	Make a set and copy the values from begin to end. |	O(n log n)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 s.find(key);| 	Return an iterator pointing to an occurrence of key in s, or s.end() if key is not in s. |	O(log n)
@@ -245,7 +285,9 @@ s.size();| 	Return current number of elements. |	O(1)
 s.empty();| 	Return true if set is empty. |	O(1)
 s.begin() 	Return an iterator pointing to the first element. |	O(1)
 s.end() 	Return an iterator pointing one past the last element. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 s.insert(iterator, key);| 	Inserts key into s. iterator is taken as a "hint" but key will go in the correct position no matter what. Returns an iterator pointing to where key went. |	O(log n)
@@ -274,12 +316,16 @@ multimaps are like map except that they allow duplicate keys. map[key] is not de
 
 
 `#include <map>`
+
 #### Constructors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 map< key_type, value_type, key_compare > m;| 	Make an empty map. key_compare should be a binary predicate for ordering the keys. It's optional and will default to a function that uses operator<. |	O(1)
 map< key_type, value_type, key_compare > m(begin, end);| 	Make a map and copy the values from begin to end. |	O(n log n)
+
 #### Accessors
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 m[key];| 	Return the value stored for key. This adds a default value if key not in map. |	O(log n)
@@ -291,7 +337,9 @@ m.size();| 	Return current number of elements. |	O(1)
 m.empty();| 	Return true if map is empty. |	O(1)
 m.begin();| 	Return an iterator pointing to the first pair. |	O(1)
 m.end();| 	Return an iterator pointing one past the last pair. |	O(1)
+
 #### Modifiers
+
 Syntax | Detail | Time Complexity
 --- | --- | ---
 m[key] = value;| 	Store value under key in map. |	O(log n)
