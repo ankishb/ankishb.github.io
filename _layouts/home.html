@@ -15,12 +15,26 @@ layout: default
       {%- for post in site.posts -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
+        <span class="post-meta">
+        {{ post.date | date: date_format }}
+          <span>
+            {% for tag in post.tags %}
+              {% capture tag_name %}
+                {{ tag }}
+              {% endcapture %}
+              <a class="post-tag" href="/ankishb.github.io/tag/{{ tag_name }}">
+                <nobr>{{ tag_name }}</nobr>
+              </a>
+            {% endfor%}
+          </span>>
+        </span>
+        
+        <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
-        </h3>
+        </h2>
+
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
