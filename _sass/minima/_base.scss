@@ -161,7 +161,7 @@ blockquote {
   @include relative-font-size(1.125);
   letter-spacing: -1px;
   font-style: italic;
-  background: #f0f0f0
+  background: #f0f0f0;
 
   > :last-child {
     margin-bottom: 0;
