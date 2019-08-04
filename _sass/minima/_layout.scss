@@ -122,17 +122,30 @@
  */
 .site-footer {
   border-top: 1px solid $grey-color-light;
-  padding: $spacing-unit 0;
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: $small-font-size;
+  color: $grey-color;
+  clear: both;
   margin-bottom: 30px;
 
-  p{
+  a {
+    color: $grey-color;
+  }
+  p {
     margin: 5px auto;
     width: 200px;
   }
-
+  img {
+    width: 26px;
+    height: 26px;
+    margin: 0 4px;
+    display: block;
+    float: left;
+  }
 }
 
 .footer-heading {
