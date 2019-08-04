@@ -1,7 +1,12 @@
 ---
 layout: post
+title: "practical-advice-in-data-science"
+date: 2018-12-22
 tag: data-science
 ---
+
+
+> This post is in progress.
 
 **As you read the tutorial, after that participate in this [kaggle compitition][https://www.kaggle.com/c/spooky-author-identification/data] to analyse your skill and practice.**
 

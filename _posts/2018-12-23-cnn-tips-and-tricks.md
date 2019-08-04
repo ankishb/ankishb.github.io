@@ -1,7 +1,10 @@
 ---
 layout: post
-tag: CNN Attention
+title: "cnn-tips-and-tricks"
+date: 2018-12-23
+tags: CNN Attention
 ---
+
 
 
 

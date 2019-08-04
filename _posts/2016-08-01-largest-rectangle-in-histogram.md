@@ -2,7 +2,7 @@
 layout: post
 title: "largest-rectangle-in-histogram"
 date: 2019-08-01
-tags: leetcode stack
+tags: leetcode stack c++
 ---
 
 ## Problem Statement

@@ -2,7 +2,7 @@
 layout: post
 title: "STL-container-summary-with-time-complexity"
 date: 2019-06-12
-tags: STL-container time-complexity
+tags: STL-container time-complexity c++
 ---
 
 This is a brief summary of the containers in the Standard Template Library. It deliberately sacrifices completeness for simplicity. Information is also available on the iterators and algorithms.

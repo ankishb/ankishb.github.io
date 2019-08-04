@@ -2,7 +2,7 @@
 layout: post
 title: "smallest-sufficient-team-leetcode"
 date: 2019-07-25
-tags: leetcode dp bit-mask
+tags: leetcode dp bit-mask c++
 ---
 
 ## Problem Statement

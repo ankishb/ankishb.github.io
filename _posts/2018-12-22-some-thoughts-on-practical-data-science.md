@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "some-thoughts-on-practical-data-science"
-categories: data-science
+date: 2018-12-22
 tag: data-science
 ---
+
+> This post is in progress
 
 ## Control Overfitting
 
