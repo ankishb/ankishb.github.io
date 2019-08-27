@@ -54,9 +54,11 @@ int upper_bound(int arr[], int n, int target){
         if(arr[mid] >= target) hi = mid;
         else lo = mid+1;
     }
-    return (arr[mid] >= target) ? mid : mid+1;
+    return (arr[lo] >= target) ? lo : lo+1;
 }
 ```
+
+**Note**: If we want upper bound function as in c++ doc, than acc to their statement, arr[i] < target, so we can just change the `return` statement as `return (arr[lo] > target) ? lo : lo+1;`
 
 
 Note: return statement also handle edge cases such as if element doesn't exit in given array.

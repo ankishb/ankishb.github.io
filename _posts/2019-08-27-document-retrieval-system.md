@@ -29,4 +29,8 @@ Note: our loss function is to reconstruct the original features
 
 That's it, we can get similar document as the query set, if NN is trained well.
 
---- 
+### Applications of information retrieval
+- better label of product on amazon (let's say, we have some wooden chair for child, it is labeled as furniture, now using the above method, we can find other product similar to this, from there we can have history of buyer and their other product and can estimate its more better label as `baby-product`)
+- dicovering similar neughbourhood (for house price estimation, viloent/crime forecasting etc)
+- structring web search results (categorize the result, for example we search for `watson`, it will show `ibm-watson`, `emma-watson` or other things, so we can display these result structurally based on categories)
+- meta feature to train another model
