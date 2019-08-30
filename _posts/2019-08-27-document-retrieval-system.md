@@ -7,7 +7,7 @@ tag: deep-learning
 
 This will be a very quick post on document retrieval system, where we see, how we can retrieve the similar set of document on the basis of queries.
 
-## Problem statement:
+## ❤ Problem statement ❤
 Let's say, we have `1000` documents unlabeled document. Our objective is to return the response of `query` document, which will be the most similar document (`semantic-wise`) This problem is similar to topic modelling.
 
 ### Few Approaches:
