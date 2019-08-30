@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "cpp-summary"
+title: "cpp-compact-summary"
 date: 2019-08-30
 tag: c++
 ---
