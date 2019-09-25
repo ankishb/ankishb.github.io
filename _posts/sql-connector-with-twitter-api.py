@@ -470,6 +470,9 @@ class MultiHeadAttention():
         # outputs = Add()([outputs, q]) # sl: fix
         return self.layer_norm(outputs), attn
 
+
+
+
 class PositionwiseFeedForward():
     def __init__(self, d_hid, d_inner_hid, dropout=0.1):
         self.w_1 = Conv1D(d_inner_hid, 1, activation='relu')
@@ -565,3 +568,126 @@ s2s.compile()
 model = s2s.model
 model.summary()
 
+
+
+
+
+
+
+
+
+
+######## connecting mysql with pandas ########
+import pandas as pd
+
+# Create dataframe
+data=pd.DataFrame({
+    'book_id':[12345,12346,12347],
+    'title':['Python Programming','Learn MySQL','Data Science Cookbook'],
+    'price':[29,23,27]
+})
+
+from sqlalchemy import create_engine
+
+# create sqlalchemy engine
+engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root",
+                               pw="12345",
+                               db="employee"))
+
+# Insert whole DataFrame into MySQL
+data.to_sql('book_details', con = engine, if_exists = 'append', chunksize = 1000)
+"""
+Now let’s take a closer look at what each of these parameters is doing in our code.
+
+book_details 
+    It is the name of table into which we want to insert our DataFrame.
+con = engine 
+    It provides the connection details (recall that we created engine using our authentication details in the previous step).
+if_exists = 'append' 
+    It checks whether the table we specified already exists or not, and then appends the new data (if it does exist) or creates a new table (if it doesn’t).
+chunksize 
+    It writes records in batches of a given size at a time. By default, all rows will be written at once.
+"""
+
+
+####### Read data from sql server #######
+# Import module
+import pymysql
+
+# create connection
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='12345',
+                             db='employee')
+
+# Create cursor
+my_cursor = connection.cursor()
+
+# Execute Query
+my_cursor.execute("SELECT * from employee")
+
+# Fetch the records
+result = my_cursor.fetchall()
+
+for i in result:
+    print(i)
+
+# Close the connection
+connection.close()
+
+
+
+
+
+
+import pymysql
+
+
+try:
+    # Connect to the database
+    connection = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='12345',
+        db='employee'
+    )
+
+
+    cursor=connection.cursor()
+
+    # Create a new record
+    sql = "INSERT INTO `employee` (`EmployeeID`, `Ename`, `DeptID`, `Salary`, `Dname`, `Dlocation`) VALUES (%s, %s, %s, %s, %s, %s)"
+    cursor.execute(sql, (1009,'Morgan',1,4000,'HR','Mumbai'))
+
+    # connection is not autocommit by default. So we must commit to save our changes.
+    connection.commit()
+
+    # Execute query
+    sql = "SELECT * FROM `employee`"
+    cursor.execute(sql)
+    # Fetch all the records
+    result = cursor.fetchall()
+    for i in result:
+        print(i)
+
+except Error as e:
+    print(e)
+
+finally:
+    # close the database connection using close() method.
+    connection.close()
+
+
+
+######### Insertion row by row #########
+
+# creating column list for insertion
+cols = "`,`".join([str(i) for i in data.columns.tolist()])
+
+# Insert DataFrame recrds one by one.
+for i,row in data.iterrows():
+    sql = "INSERT INTO `book_details` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+    cursor.execute(sql, tuple(row))
+
+    # the connection is not autocommitted by default, so we must commit to save our changes
+    connection.commit()
