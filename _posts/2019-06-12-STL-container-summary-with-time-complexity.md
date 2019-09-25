@@ -401,4 +401,101 @@ m.insert(pair) | 	Inserts the <key, value> pair into the map. Equivalent to the 
 ---
 
 
+## Algorithms:
+#### partial-sort
+Partially sort elements in range
+Rearranges the elements in the range [first,last), in such a way that the elements before middle are the smallest elements in the entire range and are sorted in ascending order, while the remaining elements are left without any specific order.
+
+The elements are compared using operator< for the first version, and comp for the second.
+```c++
+// partial_sort example
+#include <iostream>     // std::cout
+#include <algorithm>    // std::partial_sort
+#include <vector>       // std::vector
+
+bool myfunction (int i,int j) { return (i<j); }
+
+int main () {
+  int myints[] = {9,8,7,6,5,4,3,2,1};
+  std::vector<int> myvector (myints, myints+9);
+
+  // using default comparison (operator <):
+  std::partial_sort (myvector.begin(), myvector.begin()+5, myvector.end());
+
+  // using function as comp
+  std::partial_sort (myvector.begin(), myvector.begin()+5, myvector.end(),myfunction);
+
+  // print out content:
+  std::cout << "myvector contains:";
+  for (std::vector<int>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
+
+  return 0;
+}
+
+  
+Edit & Run
+
+
+Possible output:
+
+myvector contains: 1 2 3 4 5 9 8 7 6
+```
+
+1. sort
+  - use introsort (hybrid algo that use quicksort and heapsort)
+  - `    std::sort(v.begin(), v.end());`
+  - if time complexity increase `O(N logN)` then it switch to `heapsort`, to avoid worst time complexity `O(N*N)` of `quicksort`
+2. partial-sort
+  - 
+3. stable_sort
+  - Sort elements preserving order of equivalents
+  - `  std::stable_sort (v.begin(), v.end());`
+  - it uses Merge Sort algorithm and has time complexity of O(N log(N)²)
+  - it is a time efficient algorithm, it has a high memory cost.
+3. partial-sort
+  - It sorts the array elements from a range first to the middle will be sorted and rest of the element will be in random order
+  - order of equal elements is not guaranteed to be preserved.
+  - use `heapsort`
+  - `std::partial_sort(v.begin(), v.begin() + 4, v.end());`
+4. partition
+  - Rearranges the elements from the range [first,last), in such a way that all the elements for which pred returns true precede all those for which it returns false. The iterator returned  points to the first element of the second group.
+  - `bool IsOdd (int i) { return (i%2)==1; }`
+  - `std::partition (v.begin(), v.end(), IsOdd);`
+5. nth_element
+  -  Rearranges the elements in the range [first,last), in such a way that the element at the nth position is the element that would be in that position in a sorted sequence.
+  - `  std::nth_element (v.begin(), v.begin()+5, v.end());`
+  - `bool myfunction (int i,int j) { return (i<j); }`
+  - `  std::nth_element (v.begin(), v.begin()+5, v.end(),myfunction);`
+  -  The other elements are left without any specific order, except that none of the elements preceding nth are greater than it, and none of the elements following it are less.
+
+
 Ref: http://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
+
+
+
+
+
+
+## operator precedence chart
+Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.
+
+
+Category | Operator | Associativity
+---|---|---
+Postfix | () [] -> . ++ - - | Left to right
+Unary | + - ! ~ ++ - - (type)* & sizeof | Right to left
+Multiplicative | * / % | Left to right
+Additive | + - | Left to right
+Shift | << >> | Left to right
+Relational | < <= > >= | Left to right
+Equality | == != | Left to right
+Bitwise AND | & | Left to right
+Bitwise XOR | ^ | Left to right
+Bitwise OR | | | Left to right
+Logical AND | && | Left to right
+Logical OR | || | Left to right
+Conditional | ?: | Right to left
+Assignment | = += -= *= /= %=>>= <<= &= ^= |= | Right to left
+Comma | , | Left to right
