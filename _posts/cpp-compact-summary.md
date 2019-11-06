@@ -258,7 +258,32 @@ In C++, We can have more than one constructor in a class with same name, as long
     While creating the object, arguments must be passed to let compiler know, which constructor needs to be called.
 
 
+## Difference between `overloading` and `overriding`
+- Overloading a method (or function) in C++ is the ability for functions of the same name to be defined as long as these methods have different signatures (different set of parameters). Method overriding is the ability of the inherited class rewriting the virtual method of the base class.
 
+1. In overloading, there is a relationship between methods available in the same class whereas in overriding, there a is relationship between a superclass method and subclass method.
+2. Overloading does not block inheritance from the superclass whereas overriding blocks inheritance from the superclass.
+3. In overloading, separate methods share the same name whereas in overriding, subclass method replaces the superclass.
+4. Overloading must have different method signatures whereas overriding must have same signature.
+
+#### Another response
+1. Overloading happens at compile-time while Overriding happens at runtime: The binding of overloaded method call to its definition has happens at compile-time however binding of overridden method call to its definition happens at runtime.
+2. The most basic difference is that overloading is being done in the same class while for overriding base and child classes are required. Overriding is all about giving a specific implementation to the inherited method of parent class.
+3. Static binding is being used for overloaded methods and dynamic binding is being used for overridden/overriding methods.
+4. Performance: Overloading gives better performance compared to overriding. The reason is that the binding of overridden methods is being done at runtime.
+5. private and final methods can be overloaded but they cannot be overridden. It means a class can have more than one private/final methods of same name but a child class cannot override the private/final methods of their base class.
+6. Argument list should be different while doing method overloading. Argument list should be same in method Overriding.
+
+---
+
+## Difference between `Static Binding` vs `Dynamic Binding`
+1. Static binding happens at compile-time while dynamic binding happens at runtime.
+2. Binding of private, static and final methods always happen at compile time since these methods cannot be overridden. When the method overriding is actually happening and the reference of parent type is assigned to the object of child class type then such binding is resolved during runtime.
+3. The binding of overloaded methods is static and the binding of overridden methods is dynamic.
+
+
+
+---
 
 ## Structure:
 - Assignment is allowed in c
