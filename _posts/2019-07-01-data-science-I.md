@@ -220,65 +220,48 @@ When dealing with time series data, traditional cross-validation (like k-fold) s
 
 
 ## Feature Selection [src-analytics-vidya]:
-
 - Filter Methods
 - Wrapper Methods
 - Embedded Methods
 - Difference between Filter and Wrapper methods
 
 
-
-
 ### Filter Methods.
-
 - Pearson’s Correlation: It is used as a measure for quantifying linear dependence between two continuous variables X and Y. Its value varies from -1 to +1.
 
 - LDA: Linear discriminant analysis is used to find a linear combination of features that characterizes or separates two or more classes (or levels) of a categorical variable.
 
-Chi-Square: It is a is a statistical test applied to the groups of categorical features to evaluate the likelihood of correlation or association between them using their frequency distribution.
+- Chi-Square: It is a is a statistical test applied to the groups of categorical features to evaluate the likelihood of correlation or association between them using their frequency distribution.
 
 **NOTE**: Filter Methods does not remove multicollinearity.
 
 
-
-
-
-
-
 ### wrapper methods:
 Here, we try to use a subset of features and train a model using them. Based on the inferences that we draw from the previous model, we decide to add or remove features from your subset. 
--This is a search problem. 
--This is computationally very expensive.
+- This is computationally very expensive.
 
 Methods:
-- forward feature selection
-- backward feature elimination
-- recursive feature elimination
-
-#### Forward Selection:
-Forward selection is an iterative method in which we start with having no feature in the model. In each iteration, we keep adding the feature which best improves our model till an addition of a new variable does not improve the performance of the model.
-
-#### Backward Elimination
-In backward elimination, we start with all the features and removes the least significant feature at each iteration which improves the performance of the model. We repeat this until no improvement is observed on removal of features.
-
-#### Recursive Feature elimination
-It is a greedy optimization algorithm which aims to find the best performing feature subset. It repeatedly creates models and keeps aside the best or the worst performing feature at each iteration. It constructs the next model with the left features until all the features are exhausted. It then ranks the features based on the order of their elimination.
-
-
+1. forward feature selection
+    - we start with having no feature in the model. At each iteration, we keep adding the feature which best improves our model
+2. backward feature elimination
+    - we start with all the features and removes the least significant feature at each iteration which improves the performance of the model
+3. recursive feature elimination
+    - It is a greedy optimization algorithm which aims to find the best performing feature subset. 
+    1. It repeatedly creates models and keeps aside the best or the worst performing feature at each iteration. 
+    2. It constructs the next model with the left features until all the features are exhausted. 
+    3. It then ranks the features based on the order of their elimination.
 
 
 ### Difference between Filter and Wrapper methods
-
 The main differences between the filter and wrapper methods for feature selection are:
-
-- Filter methods measure the relevance of features by their correlation with dependent variable while wrapper methods measure the usefulness of a subset of feature by actually training a model on it.
-- Filter methods are much faster compared to wrapper methods as they do not involve training the models. On the other hand, wrapper methods are computationally very expensive as well.
-- Filter methods use statistical methods for evaluation of a subset of features while wrapper methods use cross validation.
-- Filter methods might fail to find the best subset of features in many occasions but wrapper methods can always provide the best subset of features.
-- Using the subset of features from the wrapper methods make the model more prone to overfitting as compared to using subset of features from the filter methods
-
+1. Filter methods measure the relevance of features by their correlation with dependent variable while wrapper methods measure the usefulness of a subset of feature by actually training a model on it.
+2. Filter methods are much faster compared to wrapper methods as they do not involve training the models. On the other hand, wrapper methods are computationally very expensive as well.
+3. Filter methods use statistical methods for evaluation of a subset of features while wrapper methods use cross validation.
+4. Filter methods might fail to find the best subset of features in many occasions but wrapper methods can always provide the best subset of features.
+5. Using the subset of features from the wrapper methods make the model `more prone to overfitting` as compared to using subset of features from the filter methods
 
 
+> Afterward, post is in progress.
 
 ## Feature Selection[More-Info](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
 
@@ -320,7 +303,7 @@ Accuracy is:  0.9532163742690059
 
 
 2) Univariate feature selection and random forest classification
-n univariate feature selection, we will use SelectKBest that removes all but the k highest scoring features
+In univariate feature selection, we will use SelectKBest that removes all but the k highest scoring features
 
 
 ```python
@@ -377,8 +360,6 @@ Chosen best 5 feature by rfe: Index(['area_mean', 'concavity_mean', 'area_se', '
 
 Now we will not only find best features but we also find how many features do we need for best accuracy.
 
-
-
 ```python
 from sklearn.feature_selection import RFECV
 
@@ -390,8 +371,8 @@ rfecv = rfecv.fit(x_train, y_train)
 print('Optimal number of features :', rfecv.n_features_)
 print('Best features :', x_train.columns[rfecv.support_])
 
-Optimal number of features : 14
-Best features : Index(['texture_mean'....]
+# Optimal number of featu<!-- res : 14
+# Best features : Index(['te -->xture_mean'....]
 
 plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
 ```
@@ -429,3 +410,12 @@ plt.show()
 Feature ranking:
 1. feature 1 (0.213700) ....
 ```
+
+
+
+
+Cat var: Qualitive variable
+Num var: Quantitative Var
+
+t-statistics:
+Final the coeeficient of feature in model and also find the std dev error and t-stat = (coeff/std-dev error)

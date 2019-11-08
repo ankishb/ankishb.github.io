@@ -18,9 +18,7 @@ There are in general two ways that you can control overfitting in XGBoost:
     You can also reduce stepsize `eta`. Remember to increase `num_round` when you do so.
 
 ## Handle Imbalanced Dataset
-
 - Feature selection with weighted samples approach
-
 - If you care only about the overall performance metric (AUC) of your prediction
     Balance the positive and negative weights via `scale_pos_weight`
     Use AUC for evaluation
@@ -430,9 +428,9 @@ gsearch6 = GridSearchCV(estimator = XGBClassifier( learning_rate =0.1, n_estimat
 gsearch6.fit(train[predictors],train[target])
 gsearch6.grid_scores_, gsearch6.best_params_, gsearch6.best_score_
 ```
-# Step 6: Reducing Learning Rate and repeat jon again
 
-'''python
+# Step 6: Reducing Learning Rate and repeat jon again
+```python
 xgb4 = XGBClassifier(
  learning_rate =0.01,
  n_estimators=5000,
@@ -447,7 +445,7 @@ xgb4 = XGBClassifier(
  scale_pos_weight=1,
  seed=27)
 modelfit(xgb4, train, predictors)
-'''
+```
 
 ##  As I mentioned in the end, techniques like feature engineering and blending have a much greater impact than parameter tuning. For instance, I generally do some parameter tuning and then run 10 different models on same parameters but different seeds. Averaging their results generally gives a good boost to the performance of the model.
 
