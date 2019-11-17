@@ -11,15 +11,59 @@ https://github.com/JifuZhao/120-DS-Interview-Questions
 4. Is more data always better?
 
 5. What are advantages of plotting your data before performing analysis?
+- it can give some insight of data that is hard to interpret
+- visulaize text data as rare words and most occured words
+- clustering
+- nice plot of distrinution (can find some hatch some missing value region, or even abnormalities in distribution)
 
-6. How can you make sure that you don’t analyze something that ends up meaningless?
+## 6. How can you make sure that you don’t analyze something that ends up meaningless?
+- this is generally not possible that without any information or analysis about feature, we skip it by assuming it is meaningful
+- with some prior knowlegde about feature, we can through away feature
+- for exp: ID of table
 
-7. What is the role of trial and error in data analysis? What is the the role of making a hypothesis before diving in?
+## 7. What is the role of trial and error in data analysis? What is the the role of making a hypothesis before diving in?
+    1. to evaluate the changes in business model, even dataset collection, we need some statistical test. Stat test can give us more certainty about our claims. This we need to create hypothesis
+    2. Explain hypothesis testing, Null and alternative hypothesis and p-value to test it
+    3. Exp: collecting dataset from city X. 
+        - NUll: dataset represent whole country
+        - Alt: dataset reflect only one region
+        - test and reject NULL hypothesis
 
-8. How can you determine which features are the most important in your model?
+## 8. How can you determine which features are the most important in your model?
+1. information gain(gini in tree based model)
+    1. As feature are splitted at each node
+    2. we calculate the sum info-gain of feature at each node, divide by number of nodes
+    3. to compare features, we can use normalized version of this
+2. Variance thresholding
+    - check the variance in each feature
+    - feature with 0 or very less varaince, doesn't really make an impact on model prediction
+3. p-value
+4. permutation importance (shuffling data of each feature, and check the changes in testing accuracy)
+    Pros:
+    1. applicable to any model
+    2. reasonably efficient
+    3. reliable technique
+    4. no need to retrain the model at each modification of the dataset
 
-9. How do you deal with some of your predictors being missing?
-  
+    Cons:
+    1. more computationally expensive than the default feature_importances
+    2. permutation importance overestimates the importance of correlated predictors — Strobl et al (2008)
+
+5. Partial plot(also used for interpretability)
+    - apply after train the model
+    - change value of one feature in a observation
+    - for example: in soccre goal prediction, if we keep increasing the speed of player, what would model predict
+6. Shap
+7. Lime
+    - add random noise in data
+    - interpret the reason
+    - an explanation is obtained by locally approximating the selected model with an interpretable one (our fitted model)
+    - only linear models are used to approximate local behavior
+
+## 9.How do you deal with some of your predictors being missing?
+There are 
+
+
 10. You have several variables that are positively correlated with your response, and you think combining all of the variables could give you a good prediction of your response. However, you see that in the multiple linear regression, one of the weights on the predictors is negative. What could be the issue?
 
 11. Let’s say you’re given an unfeasible amount of predictors in a predictive modeling task. What are some ways to make the prediction more feasible?

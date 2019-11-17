@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "data-science-I"
-date: 2019-07-01
+date: 2019-11-17
 tag: data-science
 ---
 
@@ -107,7 +107,7 @@ Sampling can be categorize in two buckets in broad ways:
         - poor representation
 
 
-
+## Basic Step of ML practising:
 1. Explore the data
 	- draw `histogram`, `cross-plot` and so on
 	understand the data distribution
@@ -115,67 +115,43 @@ Sampling can be categorize in two buckets in broad ways:
 2. Feature Engineering
 	- Come up with hypothesis (with assumption) and prove your hypothesis
 	- Color can be important on buying second hand car, It is better to embedded color, instead of feeding raw data of images as it is.
-
 	- **In text data-set, length, average and other statistics of sentence can be another features**
-
 	- In tree based model, this statistics can be helpful
-
 	- Log(x), log(1 + x), fit poisson distribution for counting variable
-
 	- For large categorical in a feature, mean encoding is very helpful, also it helps in converge fast. **First check its distribution or distribution before and after encoding**
 3. Fit a model
 
-
+---
 
 ## Stacking (stack net)
-	- It is a meta modelling approach.
-	- In the base leevl, we train week learner and then their prediction is used by another models, to get final prediction.
+- It is a meta modelling approach.
+- In the base leevl, we train week learner and then their prediction is used by another models, to get final prediction.
+- It is simply a NN model, where each node is replaced by one model.
 
-	- It is simply a NN model, where each node is replaced by one model.
+### Process:
+- Split the adta in K parts
+- train weak learner on each K-1 parts and holdout one part for prediction for each weak learner
+- Algorithm steps with exp:
+	1. We split the dataset in 4 parts. 
+	2. Now, train first weak learner on 1,2,3 and predict on 4th.
+	3. Train 2nd weak learner on 1,2,4 and predict on 3rd.
+	4. repeat on 
+	5. Now, we have prediction of eavh learner on separate hold-out and after combining all, we get prediction on entire data-set.
 
-	**Process**:
-		- Split the adta in K parts
-		- train weak learner on each K-1 parts and holdout one part for prediction for each weak learner
-
-		**EXP**: 
-		1. We split the dataset in 4 parts. 
-		2. Now, train first weak learner on 1,2,3 and predict on 4th.
-		3. Train 2nd weak learner on 1,2,4 and predict on 3rd.
-		4. repeat on 
-		5. Now, we have prediction of eavh learner on separate hold-out and after combining all, we get prediction on entire data-set.
-
-
-
+---
 
 ## Data-Leakage
-- data-leakage make model to learn something other than what we intend.
-- create bias in model
+- data-leakage make model to learn something other than what we intended.
+- produce bias in model
 - If we have information or feature in training data-set, that is outside from training data-set or that features has not any coorelation with the training data distribution, that is data-leakage
-- `How we induce data-leakage (generally)?`: While building model, if we use entire data (train + test) for standardization which will know the entire distribution. Whereas our aim is to learn that distribution by training our model only trainining data-set.
+- `How do we induce data-leakage (generally)?`: While building model, if we use entire data (train + test) for standardization which will know the entire distribution. Whereas our aim is to learn that distribution by training our model only trainining data-set.
 
 > Use standarization o training data-set and while testing normalize the test data with the same parameters used in training time.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classical Validation
-	We generally, split our data-set into training and testing. Further from training data-set, we take some part for validation. This is classical setting. **We use K-Fold validation strategy to obtain unbiased estimate of the performance, i.e. sum of all fold's prediction / K**
+## Cross Validation
+We generally, split our data-set into training and testing. Further from training data-set, we take some part for validation. This is classical setting. **We use K-Fold validation strategy to obtain unbiased estimate of the performance, i.e. sum of all fold's prediction / K**
 
 **Noe that this K-Fold validation considers on training data**
 
@@ -188,36 +164,26 @@ Using nested cross-validation, we train K-models with different paraameters, and
 
 
 ## Why is Cross-Validation Different with Time Series?
-
 When dealing with time series data, traditional cross-validation (like k-fold) should not be used for two reasons:
-
-    - Temporal Dependencies
-    - Arbitrary choice of Test data-set
+- Temporal Dependencies
+- Arbitrary choice of Test data-set
 
 
 ## Nested CV method
-	-Predict Second half
+- Predict Second half
+    - Choose any random test set and on remaining data-set, main training and validation with temporal relation
+    - **Not much robust**, because opf random test-set selection.
 
-	Choose any random test set and on remaining data-set, main training and validation with temporal relation
-
-	**Not much robust**, because opf random test-set selection.
-
-	- Forward chaining
-
-	Maintain temporal relation between all three train, validation and test set.
-
-	For example, we have data for 10 days.
-	1. train on 1st day, validate on 2nd and test on else
-	2. train on first-two, validate on third and test on else
-	3. repeat.
-
- 	This method produces many different train/test splits and the error on each split is averaged in order to compute a robust estimate of the model error.
+- Forward chaining
+Maintain temporal relation between all three train, validation and test set.
+- For example, we have data for 10 days.
+    1. train on 1st day, validate on 2nd and test on else
+    2. train on first-two, validate on third and test on else
+    3. repeat.
+    This method produces many different train/test splits and the error on each split is averaged in order to compute a robust estimate of the model error.
 
 
-
-
-
-
+---
 
 ## Feature Selection [src-analytics-vidya]:
 - Filter Methods
