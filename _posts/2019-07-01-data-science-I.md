@@ -50,7 +50,7 @@ There are `3` types of missing data cases:
 2. Missing at random
 3. Not missing at random
 Here is the graph, which tells all about `bias` happens, in these three cases:
-<img src="{{ '/assets/images/missing_var_graph.jpg' | relative_url }}" width="240" height="320" align="center" />
+<img src="{{ '/assets/images/missing_var_graph.jpg' | relative_url }}" width="700" height="300" align="center" />
 Source: Nakagawa & Freckleton (2008)
 
 To test these cases:
