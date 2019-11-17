@@ -72,3 +72,64 @@ A super key is a set of one or more attributes (columns), which can uniquely ide
 
 ### Candidate keys
 Candidate keys are selected from the set of super keys, the only thing we take care while selecting candidate key is: It should not have any redundant attribute. That’s the reason they are also termed as minimal super key.
+
+
+## Remove `Duplicate without` using `distinct`
+```sql
+Remove Duplicates using self Join
+YourTable
+
+emp_name   emp_address  sex  matial_status  
+uuuu       eee          m    s
+iiii       iii          f    s
+uuuu       eee          m    s
+
+SELECT emp_name, emp_address, sex, marital_status
+from YourTable a
+WHERE NOT EXISTS (select 1 
+         from YourTable b
+         where b.emp_name = a.emp_name and
+               b.emp_address = a.emp_address and
+               b.sex = a.sex and
+               b.create_date >= a.create_date)
+
+3. Remove Duplicates using group By
+
+SELECT FirstName, LastName, MobileNo, COUNT(*) as CNT
+FROM  CUSTOMER
+GROUP BY FirstName, LastName, MobileNo;
+HAVING COUNT(*)  = 1
+```
+
+
+## Handling NULL values in query results (the NVL function)
+- NULL values represent the absence of any actual value
+- The syntax of testing for NULL values in a WHERE clause
+For example, to return all employees who do not receive a commission, the query would be:
+```sql
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE COMM IS NULL;
+```
+
+> It is important to remember that NULL is not the same as, say, zero for a numeric attribute.
+
+### NVL function
+- it is used to substitute other values in place of NULLs in the results of queries. 
+- This may be required for a number of reasons:
+    1. By default, arithmetic and aggregate functions ignore NULL values in query results. Sometimes this is what is required, but at other times we might explicitly wish to consider a NULL in a numeric column as actually representing the value zero, for example.
+    2. We may wish to replace a NULL value, which will appear as a blank column in the displayed results of a query, with a more explicit indication that there was no value for that column instance.
+
+Examples of using the NVL function
+
+1. An example of using NVL to treat all employees with NULL commissions as if they had zero commission:
+```sql
+SELECT EMPNO,NVL(COMM, 0)
+FROM EMP;
+```
+
+2. To display the word 'unassigned' wherever a NULL value is retrieved from the JOB attribute:
+```sql
+SELECT EMPNO,NVL(job, 'unassigned')
+FROM EMP;
+```

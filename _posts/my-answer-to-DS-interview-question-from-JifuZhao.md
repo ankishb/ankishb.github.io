@@ -103,10 +103,10 @@ https://github.com/JifuZhao/120-DS-Interview-Questions
 
 
 ## Predictive Modeling (19 questions)
-
 1. (Given a Dataset) Analyze this dataset and give me a model that can predict this response variable.
 
 2. What could be some issues if the distribution of the test data is significantly different than the distribution of the training data?
+    - If there is a time component this could imply that there was a change point.  This can happen because of external events, or even yearly seasonality.  If you are training a time series model on data that has yearly seasonality but your training window doesn't have enough data to determine the yearly pattern, then a test set which happens later in the year will look like it has a distribution different fr the training.
 
 3. What are some ways I can make my model more robust to outliers?
 
@@ -119,7 +119,6 @@ https://github.com/JifuZhao/120-DS-Interview-Questions
 
 7. What is regularization and where might it be helpful? What is an example of using regularization in a model?
 
-
 8. Why might it be preferable to include fewer predictors over many?
 
 9. Given training data on tweets and their retweets, how would you predict the number of retweets of a given tweet after 7 days after only observing 2 days worth of data?
@@ -129,6 +128,16 @@ https://github.com/JifuZhao/120-DS-Interview-Questions
 11. How would you construct a feed to show relevant content for a site that involves user interactions with items?
 
 12. How would you design the people you may know feature on LinkedIn or Facebook?
+This should be a collection of various algorithms to come up with this list and each algorithm can be given a weight.
+
+    - Consider graph data structure to come up with a list of "friends" and friends of friends". Give a weight to this, say W1.
+    Use user data like "Interest group" and come up with list of users which can be given to this user. Give a weight to this say W2.
+    Use user demo graphics like school, college, universties, Work places user went to and give a weight to this say W3.
+    For #3, each of these categories can have weight of their own.
+    Finally sort the list from highest weight to lowest weight and present to the user.
+
+    - "People you may know" feature is a personalized recommendation system. I would think Collaborative filtering and Content-based filtering techniques and probably propose I hybrid system of those two. I would also consider the advantages of a graph database.
+
 
 13. How would you predict who someone may want to send a Snapchat or Gmail to?
 
