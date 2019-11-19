@@ -103,14 +103,36 @@ There are
 27. Let’s say you’re building the recommended music engine at Spotify to recommend people music based on past listening history. How would you approach this problem?
 
 
+## A/B testing metrics Microsoft Bing team
+Queries/Month = Queries/session * sesssion/users users/month
+
+## Click trough Rate
+- CTR is the number of clicks that your ad receives divided by the number of times your ad is shown: clicks ÷ impressions = CTR. For example, if you had 5 clicks and 100 impressions, then your CTR would be 5%.
+- You can use CTR to gauge which ads and keywords are successful for you and which need to be improved. The more your keywords and ads relate to each other and to your business, the more likely a user is to click on your ad after searching on your keyword phrase.
+- time based feature
+- type of apps
+- if ad is more related to material of website, there are more likely chances of clicking on that
+```python
+df_click = train[train['click'] == 1]
+df_hour = train[['hour_of_day','click']].groupby(['hour_of_day']).count().reset_index()
+df_hour = df_hour.rename(columns={'click': 'impressions'})
+df_hour['clicks'] = df_click[['hour_of_day','click']].groupby(['hour_of_day']).count().reset_index()['click']
+df_hour['CTR'] = df_hour['clicks']/df_hour['impressions']*100
+```
 
 
 
 ## Statistical Inference (15 questions)
 
-1. In an A/B test, how can you check if assignment to the various buckets was truly random?
-  
-2. What might be the benefits of running an A/A test, where you have two buckets who are exposed to the exact same product?
+### 1. In an A/B test, how can you check if assignment to the various buckets was truly random?
+Visually compare the distribution (box and whiskers, histogram etc.) of each variable in group A and group B. The more similar they are in appearance the more likely it is that assignment was random.
+
+Statistically compare the distributions of each variable in group A and B using a goodness of fit test. There are a bunch to choose from. Two common ones ares Kolmogorov-Smirnov Test for continuous features and Chi-Squared Test for categorical features.
+
+Build a simple model to try and predict which group an observation will be assigned to. If assignment is truly random then you should not be able to easily predict which group the observation was assigned to.
+
+
+###2. What might be the benefits of running an A/A test, where you have two buckets who are exposed to the exact same product?
 
 3. What would be the hazards of letting users sneak a peek at the other bucket in an A/B test?
 
@@ -130,7 +152,12 @@ There are
 
 11. How would you design an experiment to determine the impact of latency on user engagement?
 
-12. What is maximum likelihood estimation? Could there be any case where it doesn’t exist?
+###12. What is maximum likelihood estimation? Could there be any case where it doesn’t exist?
+- For given data sample, we want to fit a model, while using linear regression, we fit a linear curve and then measure its coefficient.(Assumption: data is normally distributed). **But if it is not**, then we have to model it with some other method
+- We model with some disgtibution, which is defined by some `stat-properties`. For normal dist it is mean and var
+- To maximize that likelihood(probability of success), we estimate these parameter. It is called `MLE`
+
+- It doesn't work for mixture density model(GMM), probabilistic PCA, where we use EM algo. Here we use expected log likelihood
 
 13. What’s the difference between a MAP, MOM, MLE estimator? In which cases would you want to use each?
 
@@ -302,7 +329,10 @@ This should be a collection of various algorithms to come up with this list and 
 
 
 
-
+## Does kmean converge to global; solution?
+No, it converge to local solution. Kmean solves a NP hard problem. Even for 30 clusters, it can have billions of possibiities to explore.
+- Second, it keep one parameter space fixed, while optimizing another parameteric space
+- closed form solution can be found, it it can be exponential nature.
 
 
 
@@ -334,6 +364,7 @@ Q10. You are given a data set. The data set contains many variables, some of whi
 Q11. After spending several hours, you are now anxious to build a high accuracy model. As a result, you build 5 GBM models, thinking a boosting algorithm would do the magic. Unfortunately, neither of models could perform better than benchmark score. Finally, you decided to combine those models. Though, ensembled models are known to return high accuracy, but you are unfortunate. Where did you miss?
 
 Q12. How is kNN different from kmeans clustering?
+
 
 Q13. How is True Positive Rate and Recall related? Write the equation.
 
