@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Meta-Learning: Learning to Learn"
-categories: deep-learning
+date: 2018-12-16
 tag: meta-learning
 ---
 

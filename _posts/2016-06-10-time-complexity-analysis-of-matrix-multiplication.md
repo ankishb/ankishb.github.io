@@ -2,7 +2,7 @@
 layout: post
 title: "time-complexity-analysis-of-matrix-multiplication"
 date: 2019-06-10
-<!-- tags: matrix time-complexity -->
+tags: matrix time-complexity
 ---
 
 ## Time compexity Discuss:

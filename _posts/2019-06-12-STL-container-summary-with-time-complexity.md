@@ -2,35 +2,27 @@
 layout: post
 title: "STL-container-summary-with-time-complexity"
 date: 2019-06-12
-tags: STL-container time-complexity
+tags: STL-container time-complexity c++
 ---
 
-This is a brief summary of the containers in the Standard Template Library. It deliberately sacrifices completeness for simplicity. Information is also available on the iterators and algorithms.
+It is a brief summary and syntax of STL containers and algorithms.
 
-Two excellent texts on the STL are:
-
-    The STL Tutorial and Reference Guide by Musser, Derger and Saini
-    Generic Programming and the STL by Matthew Austern
-
-The containers described below are:
-
-    vectors
-    lists
-    deques
-    stacks
-    queues
-    priority queues
-    sets and multisets
-    maps and multimaps
+## Containers
+- vectors
+- lists
+- deques
+- stacks
+- queues
+- priority queues
+- sets and multisets
+- maps and multimaps
 
 ---
-# Vector 
-
-`#include <vector>`
+## Vector 
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 vector<T> v | 	Make an empty vector. |	O(1)
 vector<T> v(n) | 	Make a vector with N elements. |	O(n)
@@ -39,7 +31,7 @@ vector<T> v(begin, end) | 	Make a vector and copy the elements from begin to end
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 v[i] | 	Return (or set) the I'th element. |	O(1)
 v.at(i) | 	Return (or set) the I'th element, with bounds checking. |	O(1)
@@ -53,13 +45,71 @@ v.capacity() | 	Return maximum number of elements. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 v.push_back(value) | 	Add value to end. |	O(1) (amortized)
-v.insert(iterator, value) | 	Insert value at the position indexed by iterator. |	O(n)
+v.insert(iterator, 
+value) | 	Insert value at the position indexed by iterator. |	O(n)
 v.pop_back() | 	Remove value from end. |	O(1)
 v.erase(iterator) | 	Erase value indexed by iterator. |	O(n)
 v.erase(begin, end) | 	Erase the elements from begin to end. |	O(n)
+
+#### Advances
+
+Syntax | Detail | 
+--- | --- | ---
+copy(oldVect + first, oldVect + last, newVect) | copy value from range first to last in newVect
+
+
+  int myints[] = {10,20,30,30,20,10,10,20};
+  std::vector<int> v(myints,myints+8);           // 10 20 30 30 20 10 10 20
+
+  std::sort (v.begin(), v.end());                // 10 10 10 20 20 20 30 30
+
+  std::vector<int>::iterator low,up;
+  low=std::lower_bound (v.begin(), v.end(), 20); //          ^
+  up= std::upper_bound (v.begin(), v.end(), 20); //                   ^
+
+  std::cout << "lower_bound at position " << (low- v.begin()) << '\n';
+  std::cout << "upper_bound at position " << (up - v.begin()) << '\n';
+
+
+
+min_element(myints,myints+7)
+max_element(myints,myints+7)
+
+
+
+sort( vec.begin(), vec.end() );
+vec.erase( unique( vec.begin(), vec.end() ), vec.end() );
+
+Convert to set (using a constructor)
+
+set<int> s( vec.begin(), vec.end() );
+vec.assign( s.begin(), s.end() );
+
+
+
+int myints[] = {10,20,20,20,30,30,20,20,10};           // 10 20 20 20 30 30 20 20 10
+  std::vector<int> myvector (myints,myints+9);
+
+  // using default comparison:
+  std::vector<int>::iterator it;
+  it = std::unique (myvector.begin(), myvector.end());   // 10 20 30 20 10 ?  ?  ?  ?
+  
+  myvector.resize( std::distance(myvector.begin(),it) ); // 10 20 30 20 10
+
+  // using predicate comparison:
+  std::unique (myvector.begin(), myvector.end(), myfunction);   // (no changes)
+
+#### string function:
+- `isdigit(ch)`
+- `isalpha(ch)`
+- `tolower(ch)`
+- `toupper(ch)`
+- `islower(ch)`
+- `isupper(ch)`
+
 
 
 ---
@@ -70,7 +120,7 @@ v.erase(begin, end) | 	Erase the elements from begin to end. |	O(n)
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 deque<T> d | 	Make an empty deque. |	O(1)
 deque<T> d(n) | 	Make a deque with N elements. |	O(n)
@@ -79,7 +129,7 @@ deque<T> d(begin, end) | 	Make a deque and copy the values from begin to end. |	
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 d[i] | 	Return (or set) the I'th element. |	O(1)
 d.at(i) | 	Return (or set) the I'th element, with bounds checking. |	O(1)
@@ -92,7 +142,7 @@ d.back() | 	Return the last element. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 d.push_front(value) | 	Add value to front. |	O(1) (amortized)
 d.push_back(value) | 	Add value to end. |	O(1) (amortized)
@@ -111,14 +161,14 @@ d.erase(begin, end) | 	Erase the elements from begin to end. |	O(n)
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 list<T> l | 	Make an empty list. |	O(1)
 list<T> l(begin, end) | 	Make a list and copy the values from begin to end. |	O(n)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 l.size() | 	Return current number of elements. |	O(1)
 l.empty() | 	Return true if list is empty. |	O(1)
@@ -129,7 +179,7 @@ l.back() | 	Return the last element. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 l.push_front(value) | 	Add value to front. |	O(1)
 l.push_back(value) | 	Add value to end. |	O(1)
@@ -158,13 +208,13 @@ In the C++ STL, a stack is a container adaptor. That means there is no primitive
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 stack< container<T> > s | 	Make an empty stack. |	O(1)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 s.top() | 	Return the top element. |	O(1)
 s.size() | 	Return current number of elements. |	O(1)
@@ -172,7 +222,7 @@ s.empty() | 	Return true if stack is empty. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 s.push(value) | 	Push value on top. 	Same as push_back() for underlying container.
 s.pop() | 	Pop value from top. |	O(1)
@@ -192,13 +242,13 @@ Don't confuse a queue with a deque.
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 queue< container<T> > q | 	Make an empty queue. |	O(1)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 q.front() | 	Return the front element. |	O(1)
 q.back() | 	Return the rear element. |	O(1)
@@ -207,7 +257,7 @@ q.empty() | 	Return true if queue is empty. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 q.push(value) | 	Add value to end. 	Same for push_back() for underlying container.
 q.pop() | 	Remove value from front. |	O(1)
@@ -232,13 +282,13 @@ Priority queues are neither first-in-first-out nor last-in-first-out. You push o
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 priority_queue<T, container<T>, comparison<T> > q | 	Make an empty priority queue using the given container to hold values, and comparison to compare values. container defaults to vector<T> and comparison defaults to less<T>. |	O(1)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 q.top() | 	Return the "biggest" element. |	O(1)
 q.size() | 	Return current number of elements. |	O(1)
@@ -246,7 +296,7 @@ q.empty() | 	Return true if priority queue is empty. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 q.push(value) | 	Add value to priority queue. |	O(log n)
 q.pop() | 	Remove biggest value. |	O(log n)
@@ -267,14 +317,14 @@ Anything stored in a set has to have a comparison predicate. This will default t
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 set< type, compare > s | 	Make an empty set. compare should be a binary predicate for ordering the set. It's optional and will default to a function that uses operator<. |	O(1)
 set< type, compare > s(begin, end) | 	Make a set and copy the values from begin to end. |	O(n log n)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 s.find(key) | 	Return an iterator pointing to an occurrence of key in s, or s.end() if key is not in s. |	O(log n)
 s.lower_bound(key) | 	Return an iterator pointing to the first occurrence of an item in s not less than key, or s.end() | if no such item is found. |	O(log n)
@@ -288,7 +338,7 @@ s.end() 	Return an iterator pointing one past the last element. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 s.insert(iterator, key) | 	Inserts key into s. iterator is taken as a "hint" but key will go in the correct position no matter what. Returns an iterator pointing to where key went. |	O(log n)
 s.insert(key) | 	Inserts key into s and returns a pair<iterator, bool>, where iterator is where key went and bool is true if key was actually inserted, i.e., was not already in the set. |	O(log n)
@@ -322,14 +372,14 @@ multimaps are like map except that they allow duplicate keys. map[key] is not de
 
 #### Constructors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 map< key_type, value_type, key_compare > m | 	Make an empty map. key_compare should be a binary predicate for ordering the keys. It's optional and will default to a function that uses operator<. |	O(1)
 map< key_type, value_type, key_compare > m(begin, end) | 	Make a map and copy the values from begin to end. |	O(n log n)
 
 #### Accessors
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 m[key] | 	Return the value stored for key. This adds a default value if key not in map. |	O(log n)
 m.find(key) | 	Return an iterator pointing to a key-value pair, or m.end() if key is not in map. |	O(log n)
@@ -343,7 +393,7 @@ m.end() | 	Return an iterator pointing one past the last pair. |	O(1)
 
 #### Modifiers
 
-Syntax | Detail | Time Complexity
+Syntax | Detail | Time-Comp
 --- | --- | ---
 m[key] = value | 	Store value under key in map. |	O(log n)
 m.insert(pair) | 	Inserts the <key, value> pair into the map. Equivalent to the above operation. |	O(log n)
@@ -351,4 +401,101 @@ m.insert(pair) | 	Inserts the <key, value> pair into the map. Equivalent to the 
 ---
 
 
+## Algorithms:
+#### partial-sort
+Partially sort elements in range
+Rearranges the elements in the range [first,last), in such a way that the elements before middle are the smallest elements in the entire range and are sorted in ascending order, while the remaining elements are left without any specific order.
+
+The elements are compared using operator< for the first version, and comp for the second.
+```c++
+// partial_sort example
+#include <iostream>     // std::cout
+#include <algorithm>    // std::partial_sort
+#include <vector>       // std::vector
+
+bool myfunction (int i,int j) { return (i<j); }
+
+int main () {
+  int myints[] = {9,8,7,6,5,4,3,2,1};
+  std::vector<int> myvector (myints, myints+9);
+
+  // using default comparison (operator <):
+  std::partial_sort (myvector.begin(), myvector.begin()+5, myvector.end());
+
+  // using function as comp
+  std::partial_sort (myvector.begin(), myvector.begin()+5, myvector.end(),myfunction);
+
+  // print out content:
+  std::cout << "myvector contains:";
+  for (std::vector<int>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
+
+  return 0;
+}
+
+  
+Edit & Run
+
+
+Possible output:
+
+myvector contains: 1 2 3 4 5 9 8 7 6
+```
+
+1. sort
+  - use introsort (hybrid algo that use quicksort and heapsort)
+  - `    std::sort(v.begin(), v.end());`
+  - if time complexity increase `O(N logN)` then it switch to `heapsort`, to avoid worst time complexity `O(N*N)` of `quicksort`
+2. partial-sort
+  - 
+3. stable_sort
+  - Sort elements preserving order of equivalents
+  - `  std::stable_sort (v.begin(), v.end());`
+  - it uses Merge Sort algorithm and has time complexity of O(N log(N)²)
+  - it is a time efficient algorithm, it has a high memory cost.
+3. partial-sort
+  - It sorts the array elements from a range first to the middle will be sorted and rest of the element will be in random order
+  - order of equal elements is not guaranteed to be preserved.
+  - use `heapsort`
+  - `std::partial_sort(v.begin(), v.begin() + 4, v.end());`
+4. partition
+  - Rearranges the elements from the range [first,last), in such a way that all the elements for which pred returns true precede all those for which it returns false. The iterator returned  points to the first element of the second group.
+  - `bool IsOdd (int i) { return (i%2)==1; }`
+  - `std::partition (v.begin(), v.end(), IsOdd);`
+5. nth_element
+  -  Rearranges the elements in the range [first,last), in such a way that the element at the nth position is the element that would be in that position in a sorted sequence.
+  - `  std::nth_element (v.begin(), v.begin()+5, v.end());`
+  - `bool myfunction (int i,int j) { return (i<j); }`
+  - `  std::nth_element (v.begin(), v.begin()+5, v.end(),myfunction);`
+  -  The other elements are left without any specific order, except that none of the elements preceding nth are greater than it, and none of the elements following it are less.
+
+
 Ref: http://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
+
+
+
+
+
+
+## operator precedence chart
+Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.
+
+
+Category | Operator | Associativity
+---|---|---
+Postfix | () [] -> . ++ - - | Left to right
+Unary | + - ! ~ ++ - - (type)* & sizeof | Right to left
+Multiplicative | * / % | Left to right
+Additive | + - | Left to right
+Shift | << >> | Left to right
+Relational | < <= > >= | Left to right
+Equality | == != | Left to right
+Bitwise AND | & | Left to right
+Bitwise XOR | ^ | Left to right
+Bitwise OR | | | Left to right
+Logical AND | && | Left to right
+Logical OR | || | Left to right
+Conditional | ?: | Right to left
+Assignment | = += -= *= /= %=>>= <<= &= ^= |= | Right to left
+Comma | , | Left to right
