@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: page
 title: About
 ---
@@ -15,3 +15,362 @@ title: About
 =======
 <p> I'm writting about data scructure, deep learning and algorithms in ML, RL and in general. Send me an email: bansal.ankish1 AT gmail.com, if you have questions or find error in my posts. Thanks :)</p>
 >>>>>>> 3d78cf1be9e114ad553ea2a9a9f26e38333dcd11
+ -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style> 
+.box {
+     position: relative;
+     width: 420px;
+     height: 580px;
+     border: 1px solid blue;
+     box-sizing: border-box;
+}
+.box-s {
+     position: relative;
+     width: 900px;
+     height: 600px;
+     border: 1px solid blue;
+     box-sizing: border-box;
+}
+
+.box-text {
+     /*margin-top: -20px;*/
+     width: 420px;
+     height: 170px;
+     margin-left: 2px;
+     margin-right: 2px;
+}
+.box-s-text {
+     /*margin-top: -20px;*/
+     width: 900px;
+     height: 180px;
+     margin-left: 10px;
+     margin-right: 10px;
+}
+
+.box-footer{
+     position: absolute;
+     bottom: 10px;
+     vertical-align: bottom;
+     display: inline-block;
+     margin-bottom: -10px;
+     width: 418px;
+     height: 60px;
+     background-color: lightgrey;
+}
+.box-s-footer{
+     text-align: center;
+     position: absolute;
+     font-size: 24px;
+     bottom: 10px;
+     vertical-align: bottom;
+     display: inline-block;
+     padding-top: 5px;
+     margin-bottom: -10px;
+     width: 898px;
+     height: 60px;
+     background-color: lightblue;
+}
+</style>
+</head>
+<body>
+
+
+<img src="assets/images/profile_new.jpg" width="240" height="320" align="right" />I am Ankish Bansal, doing my Graduate from <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank">L.Behera</a>.
+
+<div class="container">
+	<p>My research interset is in the area of machine learning and reinforcement learning, where i am working on meta learning for few shot classification and data sample efficiency in reinforcement learning. In my free time, i read novel or i learn and solve question on Data structure and algorithm on hackerrank and leetcode. Sometime, i also participate in data science challenge on analytics vidhya. I love arts and travelling too.</p>
+</div>
+
+<div class="container">
+     <div class="box-s"> 
+          <center><img align="middle" width="800" height="240" src="assets/images1/data-science.jpg"></center>
+          <div class="box-s-block"> 
+               <h2 align="middle">ML Toolbox</h2> 
+               <p class="box-s-text">This repo contains various data science strategy and machine learning models to deal with structure as well as unstructured data. It contains module on feature-preprocessing, feature-engineering, machine-learning-models, etc. Some of these features are collected from the existed libraries such as scikit-learn, keras, gensim, h2o, bayesopt, xgboost, lightgbm, catboost, GraphX etc and others are implemented by me, on following the Research Paper and Data-Scientist advice (on kaggle). I have worked on feature engineering strategy a lot, which you can check in my repo.</p>
+          </div> 
+
+          <div class="box-s-buttons"> 
+               <a href="https://github.com/ankishb/ml-toolbox" target="_blank" class="btn btn-primary">Github Repo</a> 
+          </div> 
+
+          <div class="box-s-footer"> 
+               <small class="box-muted">Python, Gensim, Scikit-learn, H2o, bayesopt, GraphX, Keras, Xgboost, Catboost, lightgbm</small> 
+          </div> 
+      </div> 
+</div>
+
+<br>
+<div class="container">
+     <h2>My Data science Projects</h2>
+
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<tr>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/Object-detection.png"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Class Agnostic Object Detection</h3> 
+                    <p class="box-text">A single shot detector algorithm in addition to object conditional feature, to create a robust bounding box around object. Using this method, I secured a rank of 36/6733 in the competition at dare2complete platform, sponsored by Flipkart.</p>
+               </div> 
+
+               <div class="card-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/conditional-object-detection" target="_blank" class="btn btn-primary">Github Repo</a> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/conditional-object-detection" target="_blank" class="btn btn-primary">Project Report</a> 
+               </div> 
+
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow,  ImageAug, YOLO, SSD</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/text-review.png"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Text classification</h3> 
+                    <p class="box-text">An ensemble of classifiers such as SVM, Logistic Regression, Decision Tree, Attention Model and BERT to accurately categorize the Amazon Product Review.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/amazon-ml" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, EDA, Scikit-Learn, Xgboost, Keras, Word-Embedding, BERT, Ensemble</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/credit-risk.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">HDFC Risk Prediction</h3> 
+                    <p class="box-text">In this project, the challege was to build a model for 2500 unknown predictors(features). During this project, I experimented on a lot of feature selection and feature engineering strategy, to deal with such kind of situation. </p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/hdfc-ml" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, EDA, Scikit-Learn, statsmodels, Gradient-Boosting, H2o, Stack-Net</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/social-network.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Hike Friend Recommendation</h3> 
+                    <p class="box-text">This is a link prediction challenge. Here challenge is to handle a very big dataset, which doesn't fit in memory. During this project, I worked on graph network based feature engineering, graph embedding, memory optimization etc and secured a rank of 32/5389 in ML-Hikeathon contest.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/hike-friend-recommendation" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">GraphX, Gradient-Boost, Keras, Word-Embedding, Subsemble</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/image-classification.png"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Cifar-10 Classification</h3> 
+                    <p class="box-text">Developed a architecture using state of the art ResNet, with class conditional feature. This add more attention on the class specific feature using global as well as local features. It improve the ResNet model's score by 1.37% on Cifar-10 Dataset.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/cifar-10-resnet" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow, Attention Mechanism, Visulization</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/facenet.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Face Verification system</h3> 
+                    <p class="box-text">The objective is to build a student-attendence system which takes image as input and verify if the person is registered for the course or not. As dataset was very limited, I used network in network architecture along with hard-mining technique to successfully train a matching network model, to achieve 93% accuracy.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/facenet" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Tensorflow, Keras, ImageAug</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/segmentation1.png"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Segmentation</h3> 
+                    <p class="box-text">Implemented an U-Net architecture on blood cell Dataset and fully convolutional network on traffic-street dataset. Finally experimented with generative adverserial network for better generalization in the presence of limited dataset.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/segmentation" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow, Keras, FCN, U-Net, GAN</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/recommender-sytem.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Recommender System</h3> 
+                    <p class="box-text"></p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/recommendation-system" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow, Word-Embedding, Graph, Gradient-Boosting, Ensemble</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/stock-market.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Segmentation</h3> 
+                    <p class="box-text">Implemented an U-Net architecture on blood cell Dataset and fully convolutional network on traffic-street dataset. Finally experimented with generative adverserial network for better generalization in the presence of limited dataset.</p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/segmentation" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow, Keras, FCN, U-Net, GAN</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+     <td>
+          <div>
+          <div class="box"> 
+               <center><img align="middle" width="400" height="240" src="assets/images1/text-mining.jpg"></center>
+               <div class="box-block"> 
+                    <h3 class="box-title" align="middle">Recommender System</h3> 
+                    <p class="box-text"></p>
+               </div> 
+
+               <div class="box-buttons"> 
+                    <a href="https://github.com/ankishb/ml-projects/tree/master/recommendation-system" target="_blank" class="btn btn-primary">Project</a> 
+               </div> 
+
+               <div class="box-footer"> 
+                    <small class="box-muted">Python, Tensorflow, Word-Embedding, Graph, Gradient-Boosting, Ensemble</small> 
+               </div> 
+           </div> 
+          </div>
+     </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+
+<br>
+<h1>Small Fun Projects</h1>
+<ul>
+     <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+               <h5>Behavioral Risk Factor Surveillance System 2013: Exploratory Data Analysis</h5>
+               <a target="_blank" href="/portfolio/brfss2013_eda">Notebook</a>
+          </div>
+          <p>Analysis of the BRFSS-2013 data set using R, focusing on investigating the relationship between education and eating habits, sleep and mental health, and smoking, drinking and general health of a person.</p> 
+          <p class="list-group-skills">Skills: R, Descriptive Statistics, ggplot, dplyr</p> 
+     </li> 
+
+     <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+               <h5>3-way Sentiment Analysis for Tweets</h5>
+               <a target="_blank" href="/portfolio/sentiment_analysis_tweets">Notebook</a>
+          </div>
+          <p>3-way polarity (positive, negative, neutral) classification system for tweets, without using NLTK's sentiment analysis engine.</p> 
+          <p class="list-group-skills">Skills: Python, NLP, Scikit-learn</p>
+     </li> 
+     <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+               <h5>Inferential Statistics: Do men or women oppose sex education?</h5>
+               <a target="_blank" href="/portfolio/gss_inferential">Notebook</a>
+          </div>
+          <p>Analysing the GSS (General Social Survey) dataset using R to infer if, in the year 2012, were men, of 18 years or above in the United States, more likely to oppose sex education in public schools than women.</p> 
+          <p class="list-group-skills">Skills: R, Hypothesis Testing, ggplot, dplyr</p>
+     </li> 
+</ul>
+
+
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
