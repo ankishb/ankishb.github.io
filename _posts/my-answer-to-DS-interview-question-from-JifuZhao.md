@@ -159,15 +159,63 @@ Build a simple model to try and predict which group an observation will be assig
 
 - It doesn't work for mixture density model(GMM), probabilistic PCA, where we use EM algo. Here we use expected log likelihood
 
-13. What’s the difference between a MAP, MOM, MLE estimator? In which cases would you want to use each?
+### 13. What’s the difference between a MAP, MOM, MLE estimator? In which cases would you want to use each?
 
-14. What is a confidence interval and how do you interpret it?
+### 14. What is a confidence interval and how do you interpret it?
+Confidence interval define the 
 
-15. What is unbiasedness as a property of an estimator? Is this always a desirable property when performing inference? What about in data analysis or predictive modeling?
+### 15. What is unbiasedness as a property of an estimator? Is this always a desirable property when performing inference? What about in data analysis or predictive modeling?
+Unbiasedness means that the expected value of your estimator should be equal to the true value of the variable estimated. Though not always necessary to qualify an estimator as good, it is a great quality to have because it says that if you do an estimate again and again on different samples from the same population, their average must equal the actual value, which is something you'd ordinarily accept.
+However, unbiasedness is not the only thing that matters. As you'd see, you only have a single sample and thus the expected value doesn't make too much sense. What matters for you is how likely it is for you to get a value that is quite close to the true value and for that we consider another quality called efficiency which measures the variance of your estimator. Assuming a normal distribution or using the Chebychev's inequality you can then know how likely, it is to get close to the true value.
+As you must have guessed, an unbiased estimator with a huge variance would be useless as would be an efficient estimator with significant bias. Often, we need to go somewhere in the middle and we often try to minimize a quantity known as the Mean Squared Error.
+Another quality that is most often used is consistency, which is an asymptotic property. This is often considered a necessary condition for an estimator to satisfy to be of any use. In vague terms, an estimator will be consistent if its expected value tends to the true value and the variance to zero as the sample size grows without bound.
 
 
+### Micro-average vs Macro-average
 
+Original Post - http://rushdishams.blogspot.in/2011/08/micro-and-macro-average-of-precision.html
 
+In Micro-average method, you sum up the individual true positives, false positives, and false negatives of the system for different sets and the apply them to get the statistics.
+
+Tricky, but I found this very interesting. There are two methods by which you can get such average statistic of information retrieval and classification.
+1. Micro-average Method
+
+In Micro-average method, you sum up the individual true positives, false positives, and false negatives of the system for different sets and the apply them to get the statistics. For example, for a set of data, the system's
+
+True positive (TP1)  = 12
+False positive (FP1) = 9
+False negative (FN1) = 3
+
+Then precision (P1) and recall (R1) will be 57.14%=TP1TP1+FP1
+and 80%=TP1TP1+FN1
+
+and for a different set of data, the system's
+
+True positive (TP2)  = 50
+False positive (FP2) = 23
+False negative (FN2) = 9
+
+Then precision (P2) and recall (R2) will be 68.49 and 84.75
+
+Now, the average precision and recall of the system using the Micro-average method is
+
+Micro-average of precision=TP1+TP2TP1+TP2+FP1+FP2=12+5012+50+9+23=65.96
+
+Micro-average of recall=TP1+TP2TP1+TP2+FN1+FN2=12+5012+50+3+9=83.78
+
+The Micro-average F-Score will be simply the harmonic mean of these two figures.
+2. Macro-average Method
+
+The method is straight forward. Just take the average of the precision and recall of the system on different sets. For example, the macro-average precision and recall of the system for the given example is
+
+Macro-average precision=P1+P22=57.14+68.492=62.82
+Macro-average recall=R1+R22=80+84.752=82.25
+
+The Macro-average F-Score will be simply the harmonic mean of these two figures.
+
+Suitability Macro-average method can be used when you want to know how the system performs overall across the sets of data. You should not come up with any specific decision with this average.
+
+On the other hand, micro-average can be a useful measure when your dataset varies in size.
 
 
 
