@@ -193,11 +193,11 @@ Maintain temporal relation between all three train, validation and test set.
 
 
 ### Filter Methods.
-- Pearson’s Correlation: It is used as a measure for quantifying linear dependence between two continuous variables X and Y. Its value varies from -1 to +1.
+1. `Pearson’s Correlation`: It is used as a measure for quantifying linear dependence between two continuous variables X and Y. Its value varies from -1 to +1.
 
-- LDA: Linear discriminant analysis is used to find a linear combination of features that characterizes or separates two or more classes (or levels) of a categorical variable.
+2. `LDA`: Linear discriminant analysis is used to find a linear combination of features that characterizes or separates two or more classes (or levels) of a categorical variable.
 
-- Chi-Square: It is a is a statistical test applied to the groups of categorical features to evaluate the likelihood of correlation or association between them using their frequency distribution.
+3. `Chi-Square`: It is a is a statistical test applied to the groups of categorical features to evaluate the likelihood of correlation or association between them using their frequency distribution.
 
 **NOTE**: Filter Methods does not remove multicollinearity.
 
