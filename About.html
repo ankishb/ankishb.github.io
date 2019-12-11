@@ -105,46 +105,16 @@ img{
 <body>
 
 
-<!-- <header class="site-header"> -->
-
-  <div class="wrapper">
-    {%- assign default_paths = site.pages | map: "path" -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-
-
-    <nav class="site-nav">
-      <a class="page-link" href="{{'/About.html' | relative_url }}">About</a>
-    </nav>
-
-    <nav class="site-nav">
-      <a class="page-link" href="{{'/archive.html' | relative_url }}">Archive</a>
-    </nav>
-
-    <nav class="site-nav">
-      <a class="page-link" href="{{'/tags.html' | relative_url }}">Tags</a>
-    </nav>
-
-<!--     <nav class="site-nav">
-        
-
-        <div class="trigger">
-          {%- for path in page_paths -%}
-            {%- assign my_page = site.pages | where: "path", path | first -%}
-            {%- if my_page.title -%}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </nav> -->
-  </div>
-<!-- </header> -->
-
-
-
 
 
 <section class="container">
-     <h1>About Me</h1>
+     <nav class="site-nav">
+          <h1>
+          <a class="page-link" href="/">Bansal Blog!!</a>
+          </h1>
+    </nav>
+
+     <!-- <h1>About Me</h1> -->
      <blockquote class="blockquote bg-faded">
           <img class="img-fluid" align="right" src="assets/images/profile_new.jpg" width="240" height="320" padding-left="10px"/>My name is Ankish Bansal. I am a final year, M.Tech student at <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, where I am working in the field of Machine Learning under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank"> L. Behera</a>.
           <br>
