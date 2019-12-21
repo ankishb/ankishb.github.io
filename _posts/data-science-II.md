@@ -10,207 +10,55 @@ tag: data-science
 ## Control Overfitting
 
 There are in general two ways that you can control overfitting in XGBoost:
-
-- The first way is to directly control model complexity.
-    This includes `max_depth`, `min_child_weight` and `gamma`.
-- The second way is to add randomness to make training robust to noise.
-    This includes `subsample` and `colsample_bytree`.
-    You can also reduce stepsize `eta`. Remember to increase `num_round` when you do so.
+1. The first way is to directly control model complexity.
+    - This includes `max_depth`, `min_child_weight` and `gamma`.
+2. The second way is to add randomness to make training robust to noise.
+    - This includes `subsample` and `colsample_bytree`.
+    - You can also reduce stepsize `eta`. Remember to increase `num_round` when you do so.
 
 ## Handle Imbalanced Dataset
 - Feature selection with weighted samples approach
 - If you care only about the overall performance metric (AUC) of your prediction
-    Balance the positive and negative weights via `scale_pos_weight`
-    Use AUC for evaluation
+    - Balance the positive and negative weights via `scale_pos_weight`
+    - Use AUC for evaluation
 - If you care about predicting the right probability
-    In such a case, you cannot re-balance the dataset
-    Set parameter `max_delta_step` to a finite number (say 1) to help convergence
+    - In such a case, you cannot re-balance the dataset
+    - Set parameter `max_delta_step` to a finite number (say 1) to help convergence
 
 
 
 
 ## Booster Parameters
-
 1. min_child_weight
-  - **Min samples to further divide from that node of tree**
-  
-  - "minimum sum of instance weight(hessian) needed in a child. If the tree partition step results in a leaf node with the sum of instance weight less than min_child_weight, then the building process will give up further partitioning.
+    - **Min samples to further divide from that node of tree**
+    - "minimum sum of instance weight(hessian) needed in a child. If the tree partition step results in a leaf node with the sum of instance weight less than min_child_weight, then the building process will give up further partitioning.
+ 
+2. max_leaf_nodes
+    - The maximum number of terminal nodes or leaves in a tree
 
-  - Intuitively, this is the minimum number of samples that a node can represent in order to be split further. If there are fewer than min_child_weight samples at that node, the node becomes a leaf and is no longer split. This can help reduce the model complexity and prevent overfitting.
-
-2. max_depth 
-  - 3 - 10
-
-
-3. max_leaf_nodes
-
-    -The maximum number of terminal nodes or leaves in a tree
-
-4. gamma [default=0]
-
-    A node is split only when the resulting split gives a positive reduction in the loss function. Gamma specifies the minimum loss reduction required to make a split.
+3. gamma
+    - A node is split only when the resulting split gives a positive reduction in the loss function. 
+    - Gamma specifies the minimum loss reduction required to make a split.
     
-5. max_delta_step [default=0]
 
-    In maximum delta step we allow each tree’s weight estimation to be. If the value is set to 0, it means there is no constraint   
-    Usually this parameter is not needed, but it might help in logistic regression when class is extremely imbalanced.
-
-
-6. subsample [default=1]
-
-    Same as the subsample of GBM. Denotes the fraction of observations to be randomly samples for each tree.
-    Lower values make the algorithm more conservative and prevents overfitting but too small values might lead to under-fitting.
-    Typical values: 0.5-1
-
+4. subsample
+    - the fraction of observations to be randomly samples for each tree.
+    - Lower values make the algorithm more conservative and prevents overfitting but too small values might lead to under-fitting.
    
-   
-7. colsample_bytree [default=1]
+5. colsample_bytree
+    - the fraction of columns to be randomly samples for each tree.
 
-    Similar to max_features in GBM. Denotes the fraction of columns to be randomly samples for each tree.
-    Typical values: 0.5-1
+6. colsample_bylevel
+    - Denotes the subsample ratio of columns for each split, in each level.
 
-8. colsample_bylevel [default=1] ==>> Doesn't need
+7. scale_pos_weight
+    - A value greater than 0 should be used in case of high class imbalance as it helps in faster convergence
 
-    Denotes the subsample ratio of columns for each split, in each level.
-
-9. alpha [default=0]
-
+8. alpha
     - L1 regularization term on weight (analogous to Lasso regression)
-    - useful for high-dim data
 
-10. scale_pos_weight [default=1]
-
-    A value greater than 0 should be used in case of high class imbalance as it helps in faster convergence
-
-
-11. lambda [default=1]
-
-    L2 regularization term on weights (analogous to Ridge regression)
-
-
-
-objective [default=reg:linear]
-
-    reg:linear: linear regression
-    reg:logistic: logistic regression
-    binary:logistic: logistic regression for binary classification, output probability
-    binary:hinge: hinge loss for binary classification. This makes predictions of 0 or 1, rather than producing probabilities.
-    count:poisson –poisson regression for count data, output mean of poisson distribution
-        max_delta_step is set to 0.7 by default in poisson regression (used to safeguard optimization)
-    multi:softmax: set XGBoost to do multiclass classification using the softmax objective, you also need to set num_class(number of classes)
-    rank:pairwise: Use LambdaMART to perform pairwise ranking where the pairwise loss is minimized
-
-
-
-eval_metric [ default according to objective ]
-
-    The metric to be used for validation data.
-    The default values are rmse for regression and error for classification.
-    Typical values are:
-        rmse – root mean square error
-        mae – mean absolute error
-        logloss – negative log-likelihood
-        error – Binary classification error rate (0.5 threshold)
-        merror – Multiclass classification error rate
-        mlogloss – Multiclass logloss
-        auc: Area under the curve
-
-
-## import imp lib
-
-```python
-import xgboost as xgb
-from xgboost.sklearn import XGBClassifier
-from sklearn import cross_validation, metrics   #Additional scklearn functions
-from sklearn.grid_search import GridSearchCV   #Perforing grid search
-```
-
-
-
-## XGBModel(XGBModelBase):
-```python
-# pylint: disable=too-many-arguments, too-many-instance-attributes, invalid-name
-    """Implementation of the Scikit-Learn API for XGBoost.
-    Parameters
-    ----------
-    max_depth : int
-        Maximum tree depth for base learners.
-    learning_rate : float
-        Boosting learning rate (xgb's "eta")
-    n_estimators : int
-        Number of boosted trees to fit.
-    silent : boolean
-        Whether to print messages while running boosting.
-    objective : string or callable
-        Specify the learning task and the corresponding learning objective or
-        a custom objective function to be used (see note below).
-    booster: string
-        Specify which booster to use: gbtree, gblinear or dart.
-    nthread : int
-        Number of parallel threads used to run xgboost.  (Deprecated, please use ``n_jobs``)
-    n_jobs : int
-        Number of parallel threads used to run xgboost.  (replaces ``nthread``)
-    gamma : float
-        Minimum loss reduction required to make a further partition on a leaf node of the tree.
-    min_child_weight : int
-        Minimum sum of instance weight(hessian) needed in a child.
-    max_delta_step : int
-        Maximum delta step we allow each tree's weight estimation to be.
-    subsample : float
-        Subsample ratio of the training instance.
-    colsample_bytree : float
-        Subsample ratio of columns when constructing each tree.
-    colsample_bylevel : float
-        Subsample ratio of columns for each split, in each level.
-    reg_alpha : float (xgb's alpha)
-        L1 regularization term on weights
-    reg_lambda : float (xgb's lambda)
-        L2 regularization term on weights
-    scale_pos_weight : float
-        Balancing of positive and negative weights.
-    base_score:
-        The initial prediction score of all instances, global bias.
-    seed : int
-        Random number seed.  (Deprecated, please use random_state)
-    random_state : int
-        Random number seed.  (replaces seed)
-    missing : float, optional
-        Value in the data which needs to be present as a missing value. If
-        None, defaults to np.nan.
-    importance_type: string, default "gain"
-        The feature importance type for the feature_importances_ property: either "gain",
-        "weight", "cover", "total_gain" or "total_cover".
-    \*\*kwargs : dict, optional
-        Keyword arguments for XGBoost Booster object.  Full documentation of parameters can
-        be found here: https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst.
-        Attempting to set a parameter via the constructor args and \*\*kwargs dict simultaneously
-        will result in a TypeError.
-        .. note:: \*\*kwargs unsupported by scikit-learn
-            \*\*kwargs is unsupported by scikit-learn.  We do not guarantee that parameters
-            passed via this argument will interact properly with scikit-learn.
-    Note
-    ----
-    A custom objective function can be provided for the ``objective``
-    parameter. In this case, it should have the signature
-    ``objective(y_true, y_pred) -> grad, hess``:
-    y_true: array_like of shape [n_samples]
-        The target values
-    y_pred: array_like of shape [n_samples]
-        The predicted values
-    grad: array_like of shape [n_samples]
-        The value of the gradient for each sample point.
-    hess: array_like of shape [n_samples]
-        The value of the second derivative for each sample point
-    """
-
-    def __init__(self, max_depth=3, learning_rate=0.1, n_estimators=100,
-                 silent=True, objective="reg:linear", booster='gbtree',
-                 n_jobs=1, nthread=None, gamma=0, min_child_weight=1, max_delta_step=0,
-                 subsample=1, colsample_bytree=1, colsample_bylevel=1,
-                 reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
-                 base_score=0.5, random_state=0, seed=None, missing=None,
-importance_type="gain", **kwargs)
-```
+9. lambda
+    - L2 regularization term on weights (analogous to Ridge regression)
 
 
 
@@ -258,8 +106,6 @@ def evalerror(preds, dtrain):
     # since preds are margin(before logistic transformation, cutoff at 0)
     return 'my-error', float(sum(labels != (preds > 0.0))) / len(labels)
 
-# training with customized objective, we can also do step by step training
-# simply look at xgboost.py's implementation of train
 bst = xgb.train(param, dtrain, num_round, watchlist, obj=logregobj, feval=evalerror)
 
 ```
@@ -276,14 +122,11 @@ bst = xgb.train(param, dtrain, num_round, watchlist, obj=logregobj, feval=evaler
 
 
 
-General Approach for Parameter Tuning
-
-We will use an approach similar to that of GBM here. The various steps to be performed are:
-
-    Choose a relatively high learning rate. Generally a learning rate of 0.1 works but somewhere between 0.05 to 0.3 should work for different problems. Determine the optimum number of trees for this learning rate. XGBoost has a very useful function called as “cv” which performs cross-validation at each boosting iteration and thus returns the optimum number of trees required.
-    Tune tree-specific parameters ( max_depth, min_child_weight, gamma, subsample, colsample_bytree) for decided learning rate and number of trees. Note that we can choose different parameters to define a tree and I’ll take up an example here.
-    Tune regularization parameters (lambda, alpha) for xgboost which can help reduce model complexity and enhance performance.
-    Lower the learning rate and decide the optimal parameters .
+## General Approach for Parameter Tuning
+1. Choose a relatively high `learning rate`. Generally a learning rate of `0.1` works but somewhere between`0.05` to `0.3` should work for different problems. 
+2. Tune tree-specific parameters such as `max_depth`, `min_child_weight`, `gamma`, `subsample`, `colsample_bytree`, which controls the `overfitting`
+3.Tune regularization parameters (`lambda, alpha`) for xgboost which can help reduce `model complexity`, control `overfitting`and enhance `performance`.
+4. Lower the `learning rate` and decide the optimal parameters .
 
 
 
