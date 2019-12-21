@@ -96,16 +96,17 @@ mark{
 	/*color: black;*/
 }
 img{
-    border-radius: 10px;
+    border-radius:10px;
     max-height:100%;
     max-width:100%;
+    /*margin-bottom: -10px;*/
 }
 
 
 .img_container {
      position: relative;
      width: 100%;
-     padding-bottom: 100%; <!-- matching this to above makes it square -->
+     padding-bottom: 80%;
      float:left;
 }
 
@@ -123,6 +124,9 @@ img{
     margin: auto;
 }
 
+.zero-padding {
+  padding: 0px !important;
+}
 
 
 
@@ -131,7 +135,7 @@ img{
 <body>
 
 
-
+<!-- 
 <section class="container" style="width:80%;">
     <nav class="site-nav">
       <h1>
@@ -139,17 +143,69 @@ img{
       </h1>
     </nav>
     
-     <!-- <h1>About Me</h1> -->
      <blockquote class="blockquote bg-faded">
-          <img class="img-fluid" align="right" src="assets/images/profile_new.jpg" width="240" height="320" padding-left="20px"/>My name is Ankish Bansal. I am a final year, M.Tech student at <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, where I am working in the field of Machine Learning under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank"> L. Behera</a>.
+          <img class="img-fluid" align="right" src="assets/images/profile_new.jpg" width="200" height="240" padding-left="20px"/>
+
+        <div class="row" style="border:none;">
+            <div class="col-xs-11 container"> 
+            My name is Ankish Bansal. I am a final year, M.Tech student at <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, where I am working in the field of Machine Learning under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank"> L. Behera</a>.
           <br>
           <br>
           <p>My interest area includes <strong>Machine learning, Data Structure and Algorithms, Data Science, Database Management System and Statistical Learning</strong>. As a part of my M.Tech thesis, I work in Reinforcement Learning and Meta Learning. In Reinforcement Learning, the objective is to design techniques to deal with Credit Assignment problem, which is also known as Delayed Reward. In Meta Learning, the objective is fast adaptation and better generalization in very small dataset. It is similar to few-shot learning, multi-task learning and fine-tuning methods, except much powerful for adaptation over tasks.</p>
          <br>
           <p>Apart from my thesis work, I practice my coding skill (mostly in <strong>c++</strong> and <strong>pyhton</strong>), on coding platform such as hackerrank, interviewbit and leetcode. I also participate in ML-Hackhathon, with the objective to  improve my data-science skill, work on different set of data and model, build practical insight of real world data.</p>
+        </div>
+      </div>
      </blockquote>
+</section> -->
+
+<section class="container" style="width:80%;">
+    <nav class="site-nav">
+      <h1>
+      <a class="page-link" href="/">Bansal Blog!!</a>
+      </h1>
+    </nav>
+
+  <div class="row" style="border:none;">
+    <div class="col-sm-4 col-xs-4">
+      <br>
+      <img class="img-fluid" align="right" src="assets/images/profile_new.jpg" width="240" height="320" padding-left="20px"/>
+    </div>
+    <div class="col-sm-7 col-xs-8">  
+
+      My name is Ankish Bansal. I am a final year, M.Tech student at <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, where I am working in the field of Machine Learning under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank"> L. Behera</a>.
+        <br>
+        <br>
+        <p>My interest area includes <strong>Machine learning, Data Structure and Algorithms, Data Science, Database Management System and Statistical Learning</strong>. As a part of my M.Tech thesis, I work in Reinforcement Learning and Meta Learning. In Reinforcement Learning, the objective is to design techniques to deal with Credit Assignment problem, which is also known as Delayed Reward. In Meta Learning, the objective is fast adaptation and better generalization in very small dataset. It is similar to few-shot learning, multi-task learning and fine-tuning methods, except much powerful for adaptation over tasks.</p>
+       <br>
+        <p>Apart from my thesis work, I practice my coding skill (mostly in <strong>c++</strong> and <strong>pyhton</strong>), on coding platform such as hackerrank, interviewbit and leetcode. I also participate in ML-Hackhathon, with the objective to  improve my data-science skill, work on different set of data and model, build practical insight of real world data.</p>
+    </div>
+    
+  </div>
 </section>
 
+
+<!-- <div class="container">
+  <div class="row">
+    
+     <div class="col-sm-6 col-md-4 col-lg-4" style="border:2px solid #cecece">
+      <div class="img_container">
+        <div class="image_c">
+            <img class="img-fluid" align="right" src="assets/images/profile_new.jpg" width="240" height="320" padding-left="20px"/>
+        </div>
+      </div>
+
+     <div class="col-sm-6 col-md-4 col-lg-4" style="border:2px solid #cecece">
+        My name is Ankish Bansal. I am a final year, M.Tech student at <a href="http://www.iitk.ac.in/" target="_blank">IIT, Kanpur</a>, where I am working in the field of Machine Learning under the supervision of Prof.<a href="http://home.iitk.ac.in/~lbehera/" target="_blank"> L. Behera</a>.
+        <br>
+        <br>
+        <p>My interest area includes <strong>Machine learning, Data Structure and Algorithms, Data Science, Database Management System and Statistical Learning</strong>. As a part of my M.Tech thesis, I work in Reinforcement Learning and Meta Learning. In Reinforcement Learning, the objective is to design techniques to deal with Credit Assignment problem, which is also known as Delayed Reward. In Meta Learning, the objective is fast adaptation and better generalization in very small dataset. It is similar to few-shot learning, multi-task learning and fine-tuning methods, except much powerful for adaptation over tasks.</p>
+       <br>
+        <p>Apart from my thesis work, I practice my coding skill (mostly in <strong>c++</strong> and <strong>pyhton</strong>), on coding platform such as hackerrank, interviewbit and leetcode. I also participate in ML-Hackhathon, with the objective to  improve my data-science skill, work on different set of data and model, build practical insight of real world data.</p>
+    </div>
+    </div>
+  </div>
+</div> -->
 
 <br>
 <br>
@@ -192,12 +248,9 @@ img{
           <h3 align="middle" >
               <a href="https://github.com/ankishb/ml-projects/tree/master/conditional-object-detection" target="_blank">Class Agnostic Object Detection</a> 
           </h3> 
-          <p>A single shot detector algorithm in addition to object conditional feature, to create a robust bounding box around object. Using this method, I secured a rank of 36/6733 in the competition at dare2complete platform, sponsored by Flipkart.</p>
+          <p>This is a Class Agnostic Detection problem, where we need to localize the object irrespective of the class.. My approach is similar to single shot detector algorithm such as YOLO and SSD, except the feature extraction pipeline. To extract class agnostic feature, I used conditional feature to put more attention on the object. This trick helped me to secure a rank of <strong>36/6733</strong> in the competition at dare2complete platform, sponsored by Flipkart.</p>
           
-          <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/conditional-object-detection" target="_blank" class="btn btn-primary">Github Repo</a>  -->
-          <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/conditional-object-detection" target="_blank" class="btn btn-primary">Project Report</a>  -->
-          
-          <small>Python, Tensorflow,  ImageAug, YOLO, SSD</small> 
+          <small>Python, Tensorflow, Augmentation, YOLO, SSD</small> 
      </div>
      <div class="col-sm-6 col-md-4 col-lg-4" style="border:2px solid #cecece;" >
           <div class="img_container">
@@ -208,12 +261,12 @@ img{
 
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/amazon-ml" target="_blank">Text classification</a>
-        </h3> 
-          <p>An ensemble of classifiers such as SVM, Logistic Regression, Decision Tree, Attention Model and BERT to accurately categorize the Amazon Product Review.</p>
+          </h3> 
+          <p>The objective of this project is to design a model for <strong>Amazon Product Review Classification</strong>. This was Multilabel Classification Problem. My approach includes feature preprocessing, engineering and finally built an ensemble of model such as SVM, Logistic Regression, Decision Tree, Attention Model and BERT to accurately categorize the Amazon Product Review. This ensemble helped me to land in top shortlist for Amazon-Business-Intelligence profile.</p>
 
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/amazon-ml" target="_blank" class="btn btn-primary">Project</a> --> 
 
-          <small>Python, EDA, Scikit-Learn, Xgboost, Keras, Word-Embedding, BERT, Ensemble</small> 
+          <small>EDA, Scikit-Learn, Xgboost, Embedding, BERT, Ensemble</small> 
 
      </div>
 
@@ -227,11 +280,11 @@ img{
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/hdfc-ml" target="_blank">HDFC Risk Prediction</a> 
           </h3> 
-          <p>In this project, the challege was to build a model for 2500 unknown predictors(features). During this project, I experimented on a lot of feature selection and feature engineering strategy, to deal with such kind of situation. </p>
+          <p>This is my one of favorite project. The challege was to design a model for Risk Prediction for a financial coorporation (HDFC). We were given approximately 2500 unknown predictors. I experimented with several feature selection and feature engineering methods, during the contest. And finally, designed an efficient algorithm for interaction based feature, along with feature selection using decision tree. This repo also ha report on broad analysis of these predictors.</p>
 
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/hdfc-ml" target="_blank" class="btn btn-primary">Project</a>  -->
 
-          <small>Python, EDA, Scikit-Learn, statsmodels, Gradient-Boosting, H2o, Stack-Net</small> 
+          <small>Python, EDA, Scikit-Learn, statsmodels, GBM, H2o, Stack-Net</small> 
      </div>
 
      <div class="col-sm-6 col-md-4 col-lg-4" style="border:2px solid #cecece;" >
@@ -244,7 +297,7 @@ img{
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/hike-friend-recommendation" target="_blank">Hike Friend Recommendation</a>
           </h3> 
-          <p>This is a link prediction challenge. Here challenge is to handle a very big dataset, which doesn't fit in memory. During this project, I worked on graph network based feature engineering, graph embedding, memory optimization etc and secured a rank of 32/5389 in ML-Hikeathon contest.</p>
+          <p>This is a link prediction challenge for <strong>Hike Messenger</strong>. We were given a very big dataset, which doesn't fit in memory. During this project, I worked on feature engineering for graph dataset, graph neural network, memory optimization etc. My final approach is to collect all the feature and run LightGBM and CatBoost. My model secured a rank of <strong>32/5389</strong> in ML-Hikeathon contest. After the competition, I worked on subsemble model for large dataset.</p>
 
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/hike-friend-recommendation" target="_blank" class="btn btn-primary">Project</a>  -->
 
@@ -261,7 +314,7 @@ img{
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/cifar-10-resnet" target="_blank">Cifar-10 Classification</a>
           </h3> 
-          <p>Developed a architecture using state of the art ResNet, with class conditional feature. This add more attention on the class specific feature using global as well as local features. It improve the ResNet model's score by 1.37% on Cifar-10 Dataset.</p>
+          <p>This is my research project on deep learning. The objective is to undertand the image feature used by deep cpnvolution feature and improve the model accuracy on Cifar-10 dataset. I designed an architecture, where base model is ResNet, but head model extract feature by using global as well as local feature of the image. This technique improves accuracy by <strong>1.37%</strong>. As the designed method igores the irrelevant information in the input image, therefore final attention map is much better than simple ResNet</p>
 
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/cifar-10-resnet" target="_blank" class="btn btn-primary">Project</a>  -->
 
@@ -278,7 +331,8 @@ img{
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/facenet" target="_blank">Face Verification system</a>
           </h3> 
-          <p>The objective is to build a student-attendence system which takes image as input and verify if the person is registered for the course or not. As dataset was very limited, I used network in network architecture along with hard-mining technique to successfully train a matching network model, to achieve 93% accuracy.</p>
+          <p>This was my college project, where objective was to build a student-attendence system. Its input is image of a person and output is a verification task, if person is registered in the course. The collected dataset was very small. So to train a deep neural network model, I adopted <strong>network in network</strong> architectureI for my <strong>Maching Network</strong>. I trained it using hard-mining technique, and got <strong>93%</strong> accuraacy.</p>
+          <!-- <br> -->
 
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/facenet" target="_blank" class="btn btn-primary">Project</a>  -->
 
@@ -295,7 +349,7 @@ img{
           <h3 align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/segmentation" target="_blank">Segmentation</a>
           </h3> 
-          <p>Implemented an U-Net architecture on blood cell Dataset and fully convolutional network on traffic-street dataset. Finally experimented with generative adverserial network for better generalization in the presence of limited dataset.</p>
+          <p>In this project, I first implemented an <strong>U-Net</strong> architecture and trained on blood cell Dataset (on Kaggle). I extend it to multi-stage network, to improve score. I also experimented with differnt configuration of <strong>Fully Convolutional Network</strong> for traffic-street dataset. Finally I experimented with <strong>Generative Adverserial Network</strong> for Data Augmentation, to learn better feature (But sadly did not get success).</p>
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/segmentation" target="_blank" class="btn btn-primary">Project</a>  -->
           
           <small>Python, Tensorflow, Keras, FCN, U-Net, GAN</small>
@@ -312,7 +366,7 @@ img{
           <h3 class="box-title" align="middle">
               <a href="https://github.com/ankishb/ml-projects/tree/master/recommendation-system" target="_blank">Recommender System</a>
           </h3> 
-          <p class="box-text"></p>
+          <p></p>
           
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/recommendation-system" target="_blank" class="btn btn-primary">Project</a>  -->
           <small class="box-muted">Python, Tensorflow, Word-Embedding, Graph, Gradient-Boosting, Ensemble</small> 
@@ -328,10 +382,10 @@ img{
           <h3 class="box-title" align="middle">
               <a href="https://github.com/ankishb/ml-toolbox" target="_blank">ML Toolbox</a>
           </h3> 
-          <p class="box-text">This repo contains various data science strategy and machine learning models to deal with structure as well as unstructured data. It contains module on feature-preprocessing, feature-engineering, machine-learning-models, etc. Some of these features are collected from the existed libraries such as scikit-learn, keras, gensim, h2o, bayesopt, xgboost, lightgbm, catboost, GraphX etc and others are implemented by me, on following the Research Paper and Data-Scientist advice (on kaggle).</p>
+          <p>This repo contains various data science strategy and machine learning models to deal with structure as well as unstructured data. It contains module on feature-preprocessing, feature-engineering, machine-learning-models, etc. Some of these features are collected from the existed libraries such as scikit-learn, keras, gensim, h2o, bayesopt, xgboost, lightgbm, catboost, GraphX etc and others are implemented by me, on following the Research Paper and Data-Scientist advice (on kaggle).</p>
           
           <!-- <a href="https://github.com/ankishb/ml-projects/tree/master/recommendation-system" target="_blank" class="btn btn-primary">Project</a>  -->
-          <small class="box-muted">Python, Tensorflow, Word-Embedding, Graph, Gradient-Boosting, Ensemble</small> 
+          <small>Python, Tensorflow, Word-Embedding, Graph, Gradient-Boosting, Ensemble</small> 
      </div>
 </div>
 </div>
