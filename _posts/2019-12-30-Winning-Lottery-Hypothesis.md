@@ -10,13 +10,12 @@ Generally, in deep learning, we build a deep model and then prune some weight of
 
 They experiment with the initialization of the network and found that if we reinitialize the pruned network with the new random value, it performance decreases. But if they are re-initialized with the same weight value that are used at the start of training, we can get same or even more (sometime) on the trained model. They call this subnetwork as a winning ticket in big deep network.
 
-Algorithms:
-
-    1. `Randomly initialize` a neural network `f(x; θ)` (call it `θ_0`)
-    2. `Train` the network for `k` iteration, so the parameter becomes `θ_k`
-    3. `Prune` `p%` of the parameter `θ_k` (create a mask `m` for that)
-    4. `Reset` the remaining parameters to their value in `θ_0`, creating the winning ticket `f(x; m*θ_0)`
-    5. `Repeat` step `2-5`, till the `accuracy` change are in `threshold` level.
+#### Algorithms:
+1. `Randomly initialize` a neural network `f(x; θ)` (call it `θ_0`)
+2. `Train` the network for `k` iteration, so the parameter becomes `θ_k`
+3. `Prune` `p%` of the parameter `θ_k` (create a mask `m` for that)
+4. `Reset` the remaining parameters to their value in `θ_0`, creating the winning ticket `f(x; m*θ_0)`
+5. `Repeat` step `2-5`, till the `accuracy` change are in `threshold` level.
 
 
 Their experiment result are unbelieve. Iterative pruning make training much faster with better generalization. They proves that we can achieve same test accuracy with only **10% - 20%** of the original model. And this technique can be applied on any neural network structure.
