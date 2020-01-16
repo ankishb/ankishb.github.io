@@ -69,3 +69,8 @@ The content of this post is as follows:
     4. Current state of art `recSys platform` follows this.
 
 
+#### Some practical insights of Recommender System
+1. Netflix uses 100s of different base model, final prediction is the weighted average of all. (Generally non-linear blending is preferred)
+2. `Weighted Hybrid`: Choose `10` items from users rating for `collaborative filtering` as well as from `content based filtering`. Now make a list using `60%` weighted collaborative and `40%` weighted content list. Finally `sort` the list.
+3. `Mix Hybrid`: Take `5` items from content, `5` from user history, `5` from trending and `5` from others
+4. `Switching: confidence`: If user is logged in, switch to `collaborative filtering`, otherwise switch to `content filtering`.
